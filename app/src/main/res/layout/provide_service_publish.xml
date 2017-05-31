@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="bean"
+            type="com.bean.Clocle_pro_service" />
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+            <ImageView
+                android:id="@+id/addphoto_imgview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/bg_imgview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+<EditText
+android:hint="一句话描述你能干嘛"
+    android:layout_width="match_parent"
+    android:layout_height="80dp" />
+        <EditText
+            android:id="@+id/desc_edit"
+            android:hint="详细描述，如注意事项"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+        <TextView
+            android:id="@+id/reward_type"
+            android:text="么么哒"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+        <EditText
+            android:hint="数量"
+            android:id="@+id/reward_num"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+        <EditText
+            android:hint="标签"
+            android:id="@+id/service_tag"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+    </LinearLayout>
+</ScrollView>
+        <Button
+            android:id="@+id/service_publish"
+            android:textColor="#ffffff"
+            android:background="#ff9d00"
+            android:text="发布"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+    </FrameLayout>
+</LinearLayout>
+ </layout>

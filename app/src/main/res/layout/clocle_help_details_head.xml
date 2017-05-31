@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include layout="@layout/toolar"/>
+ <LinearLayout
+     android:orientation="horizontal"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+
+         <com.facebook.drawee.view.SimpleDraweeView
+             android:id="@+id/clocle_help_details_photo"
+             android:layout_width="50dp"
+             android:layout_height="50dp" />
+         <RelativeLayout
+             android:layout_width="0dp"
+
+             android:layout_height="50dp"
+             android:layout_marginLeft="5dp"
+             android:layout_weight="1">
+
+             <TextView
+                 android:id="@+id/nickname"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="无功至人"
+                 android:textSize="14sp" />
+             <ImageView
+                 android:id="@+id/help_sex"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginTop="3dp"
+                 android:layout_toRightOf="@+id/nickname"
+                 android:layout_width="10dp"
+                 android:layout_height="10dp"
+                 android:src="@mipmap/man"/>
+
+             <TextView
+                 android:id="@+id/timetext"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/nickname"
+                 android:layout_marginTop="3dp"
+
+
+                 android:text="28分钟前"
+                 android:textColor="#A39E9E"
+                 android:textSize="8sp" />
+             <TextView
+                 android:layout_toRightOf="@+id/timetext"
+                 android:id="@+id/school"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/nickname"
+                 android:layout_marginTop="3dp"
+                 android:layout_marginLeft="10dp"
+
+
+                 android:text="安徽中医药大学"
+                 android:textColor="#A39E9E"
+                 android:textSize="8sp" />
+
+             <ImageView
+                 android:layout_width="15dp"
+                 android:layout_height="15dp"
+                 android:layout_alignParentRight="true"
+                 android:layout_centerVertical="true"
+                 android:src="@mipmap/down" />
+         </RelativeLayout>
+
+
+ </LinearLayout>
+    <TextView
+        android:background="#FFA13EAE"
+        android:id="@+id/clocle_help_details_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <GridView
+        android:id="@+id/clocle_help_details_photos"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:numColumns="4"
+        android:horizontalSpacing="3dp"
+        android:stretchMode="columnWidth">
+
+    </GridView>
+
+</LinearLayout>

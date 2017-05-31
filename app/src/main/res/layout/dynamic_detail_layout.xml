@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/index_rv_photo_detail"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        fresco:roundAsCircle="true" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/index_rv_photo"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/dynamic_name_tv_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:lines="1"
+                            android:text="糖糖没有果" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:orientation="vertical">
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/detail_content_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll"
+                android:background="#eee" />
+
+            <android.support.v7.widget.RecyclerView
+                app:layout_scrollFlags="scroll"
+                android:id="@+id/detail_imgs_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                app:layout_scrollFlags="scroll"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#29e5fd"
+                android:text="评论、todo" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/dynamic_detail_comment_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </android.support.v7.widget.RecyclerView>
+    </android.support.design.widget.CoordinatorLayout>
+
+<!--发表评论-->
+    <RelativeLayout
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    <EditText
+        android:id="@+id/dynamic_comment_edit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="期待你的神评"/>
+        <Button
+            android:id="@+id/dynamic_comment_publish_bt"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发表"/>
+    </RelativeLayout>
+</FrameLayout>

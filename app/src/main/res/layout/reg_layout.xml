@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/reg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+    <include layout="@layout/toolar"/>
+
+
+
+
+<EditText
+    android:layout_marginTop="90dp"
+    android:id="@+id/name"
+    android:hint="请输入用户名"
+    android:textCursorDrawable="@drawable/cusor_style"
+    android:textColorHint="#FFD2D2D2"
+    android:layout_width="match_parent"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_height="36dp"
+    android:background="@drawable/edittextselector"
+    />
+    <EditText
+        android:layout_below="@+id/name"
+        android:textColorHint="#FFD2D2D2"
+        android:paddingLeft="10dp"
+        android:textCursorDrawable="@drawable/cusor_style"
+        android:id="@+id/password"
+        android:hint="请输入密码"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/edittextselector"
+        android:layout_height="36dp"
+        android:inputType="textPassword"/>
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_below="@+id/password"
+        android:id="@+id/login_bt"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/btselector"
+        android:text="登录"
+        android:textSize="18sp"
+        android:textColor="@color/white"/>
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_below="@+id/login_bt"
+        android:id="@+id/reg_bt"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/btselector"
+        android:text="注册"
+        android:textSize="18sp"
+        android:textColor="@color/white"/>
+    <TextView
+        android:layout_below="@+id/reg_bt"
+        android:layout_marginTop="20dp"
+        android:id="@+id/phone_reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="忘记密码？"/>
+
+
+    <ProgressBar
+
+        android:id="@+id/reg_progress"
+        android:visibility="gone"
+        android:elevation="2dp"
+        android:translationZ="2dp"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/qqlogin"
+
+        android:layout_marginBottom="83dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="84dp"
+        android:id="@+id/qqlogin" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/sinalogin"
+
+        android:layout_marginRight="82dp"
+        android:id="@+id/sinalogin"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="84dp" />
+</RelativeLayout>

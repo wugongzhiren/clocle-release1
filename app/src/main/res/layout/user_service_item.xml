@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ImageView
+    android:id="@+id/cloclehelp_user_photo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@mipmap/testa"
+    />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:text="糖糖没有果"/>
+        <TextView
+            android:drawableLeft="@mipmap/woman"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="女"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/cloclehelp_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提供的服务：陪跑步，陪上自习，羽毛球缺人也可以找我哦"/>
+</LinearLayout>

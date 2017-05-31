@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <include layout="@layout/toolar"/>
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="42dp">
+        <TextView
+            android:id="@+id/loginname"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="登录名"/>
+        <TextView
+            android:layout_toRightOf="@+id/loginname"
+            android:text="18168875570"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp">
+        <TextView
+            android:id="@+id/self_info_nickname"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="昵称"/>
+        <TextView
+            android:layout_toRightOf="@+id/self_info_nickname"
+            android:text="艾苏北郡的小铁匠"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/right"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp">
+        <TextView
+            android:id="@+id/self_info_sex"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="昵称"/>
+        <TextView
+            android:layout_toRightOf="@+id/self_info_sex"
+            android:text="男"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/right"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp">
+        <TextView
+            android:id="@+id/self_info_school"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="学校"/>
+        <TextView
+            android:layout_toRightOf="@+id/self_info_school"
+            android:text="安徽中医药大学"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/right"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="42dp">
+        <TextView
+            android:id="@+id/self_info_institute"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="院系"/>
+        <TextView
+            android:layout_toRightOf="@+id/self_info_institute"
+            android:text="医药信息工程学院"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/right"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp">
+        <TextView
+            android:id="@+id/self_info_class"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="班级"/>
+        <TextView
+            android:layout_toRightOf="@+id/self_info_class"
+            android:text="信息管理与信息系统"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/right"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp">
+        <TextView
+            android:id="@+id/self_info_birth"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="生日"/>
+        <TextView
+            android:layout_toRightOf="@+id/self_info_birth"
+            android:text="1993/10/12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/right"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="42dp">
+        <TextView
+            android:id="@+id/self_info_home"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="家乡"/>
+        <TextView
+            android:layout_toRightOf="@+id/self_info_home"
+            android:text="安徽安庆"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/right"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="42dp">
+        <TextView
+            android:id="@+id/self_info_qq"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="QQ"/>
+        <TextView
+            android:layout_toRightOf="@+id/self_info_qq"
+            android:text="1406999464"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/right"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="42dp">
+        <TextView
+            android:id="@+id/self_info_access"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="资料公开"/>
+        <TextView
+            android:layout_toRightOf="@+id/self_info_access"
+            android:text="仅自己可见"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/right"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

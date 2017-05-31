@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:background="#FFF">
+
+
+<android.support.v7.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+</android.support.v7.widget.Toolbar>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:src="@mipmap/photo"
+
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/imageView"
+        fresco:roundAsCircle="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp" />
+    <EditText
+        android:background="#FFFFFF"
+        android:id="@+id/username"
+        android:layout_width="300dp"
+        android:layout_height="42dp"
+        android:layout_centerHorizontal="true"
+        android:hint="请输入用户名"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:textColor="#545050"
+
+        android:layout_marginTop="190dp"/>
+    <EditText
+        android:id="@+id/password"
+        android:background="#FFFFFF"
+        android:layout_width="300dp"
+        android:layout_height="42dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:textColor="#545050"
+        android:layout_centerHorizontal="true"
+        android:hint="请输入密码"
+
+        android:layout_marginTop="230dp"/>
+    <Button
+        android:background="#EC9811"
+        android:id="@+id/login"
+        android:layout_width="300dp"
+        android:layout_height="38dp"
+
+
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="280dp"
+        android:text="登                  录"
+        android:textColor="#FFFFFF" />
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:background="#fff"
+        android:layout_below="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+      <ImageButton
+          android:background="#fff"
+          android:src="@drawable/ssdk_oks_classic_wechat"
+          android:layout_weight="1"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content" />
+        <ImageButton
+            android:background="#fff"
+            android:src="@drawable/ssdk_oks_classic_sinaweibo"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:background="#fff"
+            android:src="@drawable/ssdk_oks_classic_qq"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/common_toolbar"
+    android:layout_width="match_parent"
+    android:background="#27f9c8"
+    android:layout_height="?attr/actionBarSize">
+<Button
+    android:id="@+id/dynamic_publish"
+    android:layout_width="60dp"
+    android:layout_height="match_parent" />
+</android.support.v7.widget.Toolbar>

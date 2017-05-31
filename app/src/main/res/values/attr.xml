@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="rightmargin" format="dimension">
+
+    </attr>
+    <declare-styleable name="SlidingMenu">
+        <attr name="rightmargin">
+
+        </attr>
+    </declare-styleable>
+</resources>

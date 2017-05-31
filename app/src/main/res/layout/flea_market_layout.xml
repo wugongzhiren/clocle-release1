@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/main_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+
+        <LinearLayout
+            android:id="@+id/adv_head"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:minHeight="56dp"
+            android:background="#d25c5c"
+            app:layout_scrollFlags="scroll"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="轮播图片"/>
+
+        </LinearLayout>
+        <LinearLayout
+            app:layout_scrollFlags="scroll"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/flea_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#810e88"/>
+
+    </android.support.design.widget.AppBarLayout>
+    <com.view.MyfleMarket_viewpager
+        android:id="@+id/flea_body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:isScrollContainer="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </com.view.MyfleMarket_viewpager>
+<android.support.design.widget.FloatingActionButton
+    android:id="@+id/flea_publish"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_gravity="right|bottom"
+    android:layout_margin="60dp"
+    android:src="@mipmap/publish"
+    app:backgroundTint="#FFFFffff"
+    app:elevation="6dp"
+    app:pressedTranslationZ="12dp"
+    app:rippleColor="#FFF41115"/>
+</android.support.design.widget.CoordinatorLayout>

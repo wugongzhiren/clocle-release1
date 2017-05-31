@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#FF41F199">
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/et_flea_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="描述一下你的闲置物品"
+            android:minHeight="120dp" />
+
+        <Button
+            android:id="@+id/bt_flea_type"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="选择分类：生活用品" />
+
+        <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/lv_photo"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <Button
+            android:id="@+id/bt_flea_money"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="价格：58元"
+            android:textColor="#FFEC1010" />
+
+        <Button
+            android:id="@+id/bt_flea_publish"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+
+            android:text="确定发布" />
+    </LinearLayout>
+
+</LinearLayout>

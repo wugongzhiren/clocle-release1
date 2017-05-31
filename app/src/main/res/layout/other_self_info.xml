@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="#2EFFFFFF"
+            app:expandedTitleMarginStart="80dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:id="@+id/other_self_bg"
+                    android:src="@color/__picker_black_40"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.5">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/photo"
+                    android:layout_marginTop="70dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    />
+                <TextView
+                    android:id="@+id/nickname"
+                    android:layout_below="@+id/photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="艾苏北郡的小铁匠"
+                    android:textColor="#fff"/>
+                <TextView
+                    android:id="@+id/signature"
+                    android:layout_below="@+id/nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="签名：测试测试测试"
+                    android:textColor="#fff"/>
+                <TextView
+
+                    android:layout_below="@+id/signature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="学校：安徽中医药大学"
+                    android:textColor="#fff"/>
+
+
+
+
+            </RelativeLayout>
+            </FrameLayout>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/other_info_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <RelativeLayout
+            app:layout_scrollFlags="scroll"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <TextView
+                android:id="@+id/other_info_tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="个人相册"/>
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/other_info_img1"
+                android:layout_toRightOf="@+id/other_info_tv1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                />
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/other_info_img2"
+                android:layout_toRightOf="@+id/other_info_img1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                />
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/other_info_img3"
+                android:layout_toRightOf="@+id/other_info_img2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                />
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/other_info_img4"
+                android:layout_toRightOf="@+id/other_info_img3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                />
+        </RelativeLayout>
+
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/other_info_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </android.support.v7.widget.RecyclerView>
+
+</android.support.design.widget.CoordinatorLayout>
+    <RelativeLayout
+        android:background="#28bdc7"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:text="和TA聊天"
+            android:id="@+id/send_Message"
+            android:layout_width="100dp"
+            android:layout_height="40dp" />
+        <Button
+            android:layout_toRightOf="@+id/send_Message"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="更多资料"/>
+    </RelativeLayout>
+</FrameLayout>
