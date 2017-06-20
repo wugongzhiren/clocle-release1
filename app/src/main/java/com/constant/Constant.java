@@ -11,4 +11,7 @@ public  final class Constant {
     public static final int osserrCode1=100;//阿里云oss上传图片错误
     public static final String SUCCESS="success";//成功
     public static final String FAIL="fail";//成功
+
+
+    public static final int IMAGESELECTOR=100;//打开图片选择器选择图片
 }

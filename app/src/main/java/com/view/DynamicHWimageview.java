@@ -1,6 +1,7 @@
 package com.view;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -14,7 +15,7 @@ import tool.DensityUtil;
  * Created by Administrator on 2016/11/13.
  */
 
-public class DynamicHWimageview extends ImageView {
+public class DynamicHWimageview extends AppCompatImageView {
     private int screenwidth;
     private int screenwidthDP;
     private Context mcontext;

@@ -38,9 +38,7 @@
                     android:verticalSpacing="3dp">
 
                 </GridView>
-                <com.view.LoadingView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp" />
+
 
             </LinearLayout>
        <!--</ScrollView>-->
@@ -52,19 +50,17 @@
             android:layout_gravity="bottom"
             android:background="@drawable/edittext">
 
-            <ImageView
-                android:id="@+id/imgdynamic"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/addphoto" />
-
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/imgdynamic"
+                android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_below="@+id/imgdynamic"
+                android:text="添加图片"
                 android:layout_centerInParent="true"
-                android:text="分享图片" />
+                android:drawableBottom="@mipmap/addphoto"
+
+                />
+
+
         </RelativeLayout>
     </FrameLayout>
 </LinearLayout>

@@ -1,50 +1,7 @@
 <resources>
     <string name="app_name">圈圈</string>
-    <string name="large">SwipeRefreshLayout、FloatingActionButton和当做底栏的LinearLayout上有一个app:layout_behavior配置。
 
-SwipeRefreshLayout配置的"@string/appbar_scrolling_view_behavior"是系统提供的，用来使滑动控件与AppBarLayout互动。
-
-FloatingActionButton和底栏上配置的是我们接下来要自定义的Behavior。
-
-先看FloatingActionButton的Behavior。
-
-文／简名（简书作者）
-原文链接：http://www.jianshu.com/p/488283f74e69
-著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。
-    逻辑并不复杂，我们通过重写Behavior中关于嵌套滑动的两个回调完成了FloatingActionButton的隐藏和显示判断及操作。
-
-单独出场的底栏也可以利用上面一样的方法来设置隐藏或显示，我的底栏是和AppBarLayout一起出场，所以我就让底栏从属于AppBarLayout活动。代码如下：
-
-文／简名（简书作者）
-原文链接：http://www.jianshu.com/p/488283f74e69
-著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。
-    代码量比上个还少。我们还可以通过重写onMeasureChild()来使控件响应从属控件的大小变化。
-
-Behavior提供的很多，我这里用到的只是一部分，大家可以看看源码，根据具体需求去使用。
-
-3.BottomSheetBehavior使用（仿百度地图）
-BottomSheetBehavior是23.2版本后提供的控件，用于实现从底部滑出一个折叠布局的操作，就是谷歌地图中的效果。
-
-别问为什么我不模仿谷歌地图，当然是因为中国特色国情→_→（雾）。
-
-文／简名（简书作者）
-原文链接：http://www.jianshu.com/p/488283f74e69
-著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。</string>
-    <string name="__picker_title">Images</string>
-    <string name="__picker_delete">Delete</string>
-    <string name="__picker_done">Done</string>
-    <string name="__picker_done_with_count">Done(%1$d/%2$d)</string>
-    <string name="__picker_image_index">%1$d/%2$d</string>
-    <string name="__picker_undo">Undo</string>
-    <string name="__picker_deleted_a_photo">Deleted a photo</string>
-    <string name="__picker_confirm_to_delete">Confirm to delete?</string>
-    <string name="__picker_yes">Yes</string>
-    <string name="__picker_cancel">Cancel</string>
-    <string name="__picker_all_image">All Images</string>
-    <string name="__picker_over_max_count_tips">Up to %1$d photos can be selected</string>
-    <string name="__picker_image_count">%1$d</string>
-
-    <string name="__picker_preview">preview</string>
+    <string name="confirm">确定</string>
     <!--<string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>-->

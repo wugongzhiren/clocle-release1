@@ -6,16 +6,20 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Objects;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bean.ImageInfo;
 import com.clocle.huxiang.clocle.R;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -28,6 +32,8 @@ import com.facebook.drawee.view.SimpleDraweeView;
  *
  */
 public class ImageFactory {
+    private static String tempFilePath=Environment
+            .getExternalStorageDirectory().getAbsolutePath().toString() + "/clocle/temp_img/";
 
     /**
      * Get bitmap from specified image path
@@ -60,15 +66,14 @@ public class ImageFactory {
     }
 
     /**
-     * Compress image by pixel, this will modify image width/height.
-     * Used to get thumbnail
+     * 根据指定的图片宽高压缩图片，并返回压缩后的图片路径和图片宽高
      *
      * @param imgPath image path
      * @param pixelW target pixel of width
      * @param pixelH target pixel of height
      * @return
      */
-    public static Bitmap ratio(String imgPath, float pixelW, float pixelH) {
+    public static ImageInfo ratio(String imgPath, float pixelW, float pixelH) {
         BitmapFactory.Options newOpts = new BitmapFactory.Options();
         // 开始读入图片，此时把options.inJustDecodeBounds 设回true，即只读边不读内容
         newOpts.inJustDecodeBounds = true;
@@ -94,9 +99,18 @@ public class ImageFactory {
         newOpts.inSampleSize = be;//设置缩放比例
         // 开始压缩图片，注意此时已经把options.inJustDecodeBounds 设回false了
         Bitmap bitmap = BitmapFactory.decodeFile(imgPath, newOpts);
+
+        //保存之前删除文件夹文件
+/*        File file = new File (tempFilePath);
+        if (file.exists()) {
+            file.delete();
+        }*/
+        //文件名保存文件的长宽信息
+        String filename=String.valueOf(System.currentTimeMillis())+"_"+newOpts.outHeight+"_"+newOpts.outWidth;
+        savePhoto(bitmap,tempFilePath,filename);
         // 压缩好比例大小后再进行质量压缩
 //        return compress(bitmap, maxSize); // 这里再进行质量压缩的意义不大，反而耗资源，删除
-        return bitmap;
+        return new ImageInfo(tempFilePath,filename,newOpts.outHeight,newOpts.outWidth);
     }
 
     /**
@@ -218,8 +232,8 @@ public class ImageFactory {
      * @throws FileNotFoundException
      */
     public void ratioAndGenThumb(String imgPath, String outPath, float pixelW, float pixelH, boolean needsDelete) throws FileNotFoundException {
-        Bitmap bitmap = ratio(imgPath, pixelW, pixelH);
-        storeImage( bitmap, outPath);
+        //Bitmap bitmap = ratio(imgPath, pixelW, pixelH);
+        //storeImage( bitmap, outPath);
 
         // Delete original file
         if (needsDelete) {
@@ -240,7 +254,7 @@ public class ImageFactory {
                 dir.mkdirs();
             }
 
-            File photoFile = new File(path, photoName);
+            File photoFile = new File(path, photoName+".png");
             FileOutputStream fileOutputStream = null;
             try {
                 fileOutputStream = new FileOutputStream(photoFile);

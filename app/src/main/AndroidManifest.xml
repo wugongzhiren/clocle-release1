@@ -31,14 +31,7 @@
 
         </activity>
         <activity android:name=".Reg">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <!--<data
-                    android:host="com.clocle.huxiang.clocle"
-                    android:pathPrefix="/conversationlist"
-                    android:scheme="rong"/>-->
-            </intent-filter>
+
 
         </activity>
         <activity
@@ -178,7 +171,14 @@
             </intent-filter>
         </activity>
         <activity android:name="com.function.Dynamic_publish">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!--<data
+                    android:host="com.clocle.huxiang.clocle"
+                    android:pathPrefix="/conversationlist"
+                    android:scheme="rong"/>-->
+            </intent-filter>
             </activity>
         <activity android:name="com.function.Dynamic_Detail">
 
@@ -192,8 +192,13 @@
         <activity android:name="com.ui.AddPhoto">
 
         </activity>
-    </application>
+        <activity android:name="com.imageselector.view.StartImage">
 
+        </activity>
+        <activity android:name="com.imageselector.MultiImageSelectorActivity">
+
+        </activity>
+    </application>
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.CAMERA" />

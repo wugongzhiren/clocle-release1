@@ -14,7 +14,7 @@
 
     <color name="__picker_text_40">#282828</color>
     <color name="__picker_text_80">#505050</color>
-    <color name="__picker_text_120">#787878</color>
+    <color name="text_">#787878</color>
     <color name="__picker_item_photo_border_selected">#ff99cc00</color>
     <color name="__picker_item_photo_border_n">#33ffffff</color>
 

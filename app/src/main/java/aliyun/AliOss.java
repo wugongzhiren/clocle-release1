@@ -18,7 +18,10 @@ import com.alibaba.sdk.android.oss.model.ObjectMetadata;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.application.App;
+import com.bean.ImageInfo;
 import com.constant.Constant;
+
+import tool.ShowToast;
 
 /**
  * 阿里云oss封装
@@ -26,10 +29,16 @@ import com.constant.Constant;
  */
 
 public class AliOss {
-private OSS oss;
+    private OSS oss;
     private String endpoint = "oss-cn-shanghai.aliyuncs.com";
     private String bucketName="clocle";
-    public AliOss(Context context){
+    private static AliOss instance=new AliOss(App.getContext());
+
+    //单例模式
+    public static AliOss getAliOss(){
+        return instance;
+    }
+    private  AliOss(Context context){
 
 
 // 明文设置secret的方式建议只在测试时使用，更多鉴权模式请参考后面的`访问控制`章节
@@ -45,11 +54,16 @@ private OSS oss;
     }
 
     /**
-     * 单张文件异步上传
+     * 单张图片异步上传
      */
-    public void UploadToOssAsyn(String filepath,String fileName){
-        // 构造上传请求
-        PutObjectRequest put = new PutObjectRequest(bucketName, fileName, filepath);
+    public void UploadToOssAsyn(Object o){
+        // 构造上传请求，文件名包括后缀名
+
+
+            ImageInfo info = (ImageInfo) o;
+        PutObjectRequest  put = new PutObjectRequest(bucketName, info.name+".png", info.url);
+
+        //PutObjectRequest put = new PutObjectRequest(bucketName, info.name+".png", filepath);
 
 // 异步上传时可以设置进度回调
         put.setProgressCallback(new OSSProgressCallback<PutObjectRequest>() {
@@ -67,6 +81,7 @@ private OSS oss;
 
             @Override
             public void onFailure(PutObjectRequest request, ClientException clientExcepion, ServiceException serviceException) {
+                ShowToast.showToast(App.getContext(),"上传失败");
                 // 请求异常
                 if (clientExcepion != null) {
                     // 本地异常如网络异常等

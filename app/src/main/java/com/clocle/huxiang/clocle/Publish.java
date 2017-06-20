@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
+
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,7 +27,6 @@ import com.adapter.Picked_photo_adapter;
 import com.adapter.Picked_photo_withAddBt_Adapter;
 import com.bean.Clocle_help;
 import com.bean.MyPhotoInfo;
-import com.clocle.huxiang.clocle.databinding.PublishLayoutBinding;
 import com.common_tool.ImageFactory;
 import com.constant.Constant;
 import com.databindingbean.Clocle_help_publish;
@@ -66,7 +65,7 @@ public class Publish extends Activity implements View.OnClickListener {
     private RecyclerView recyclerView;
     private Picked_photo_withAddBt_Adapter picked_photo_adapter;
     private List<PhotoInfo> pickedUrl = new ArrayList<>();//记住的图片url
-    private PublishLayoutBinding binding;
+
     //选择好图片时回调
     private GalleryFinal.OnHanlderResultCallback mOnHanlderResultCallback = new GalleryFinal.OnHanlderResultCallback() {
         @Override
@@ -85,21 +84,15 @@ public class Publish extends Activity implements View.OnClickListener {
                 }).subscribeOn(Schedulers.newThread())
                         //指定为IO线程
                         .observeOn(Schedulers.io())
-                        .map(new Func1<String, String[]>() {
+                        .map(new Func1<String, String>() {
                             @Override
-                            public String[] call(String s) {
+                            public String call(String s) {
                                 //图片压缩，并且返回压缩完成后临时图片路径
-                                Bitmap bm = ImageFactory.ratio(s, 480, 800);
-                                String filename = UUID.randomUUID() + ".png";
-                                //filenames.add(filename);
-                                ImageFactory.savePhoto(bm, Environment
-                                        .getExternalStorageDirectory().getAbsolutePath().toString() + "/clocle/clocle_help/temp_img/", filename);
-                                return new String[]{filename, ImageFactory.savePhoto(bm, Environment
-                                        .getExternalStorageDirectory().getAbsolutePath().toString() + "/clocle/clocle_help/temp_img/", filename)};
+                               return s;
 
                             }
                         }).observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Subscriber<String[]>() {
+                        .subscribe(new Subscriber<String>() {
                             @Override
                             public void onCompleted() {
                                 pickedUrl.addAll(radioPhotoUrl);
@@ -115,10 +108,10 @@ public class Publish extends Activity implements View.OnClickListener {
                             }
 
                             @Override
-                            public void onNext(String[] s) {
+                            public void onNext(String s) {
                                 MyPhotoInfo info = new MyPhotoInfo();
-                                info.setPhotoPath(s[1]);
-                                info.setFilename(s[0]);
+                                info.setPhotoPath(s);
+                                info.setFilename(s);
                                 radioPhotoUrl.add(info);
 
 
@@ -139,7 +132,7 @@ public class Publish extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.publish_layout);
+        setContentView( R.layout.publish_layout);
         Toast.makeText(this, "测试2", Toast.LENGTH_SHORT).show();
         Clocle_help_publish bean = new Clocle_help_publish();
         bean.setText4("安徽中医药大学");
@@ -147,8 +140,7 @@ public class Publish extends Activity implements View.OnClickListener {
         bean.setText3("标签");
         bean.setText1("请描述你想要获取什么帮助？来自databingding的设值");
         //dataBinding绑定
-        binding.setBean(bean);
-        binding.setClickListener(this);
+
         pickedUrl.add(new PhotoInfo());
         picked_photo_adapter = new Picked_photo_withAddBt_Adapter(mOnHanlderResultCallback, this, pickedUrl);
         initviews();
@@ -169,7 +161,7 @@ public class Publish extends Activity implements View.OnClickListener {
                 //ShowToast.showToast(this,"databimgd");
                 //首先上传照片
                 final Bmob_UserBean bean = BmobUser.getCurrentUser(Bmob_UserBean.class);
-                //页面输入项检查
+               /* //页面输入项检查
                 if (binding.publishText.getText().toString().equals("")) {
                     ShowToast.showToast(this, "请输入求助内容");
                     return;
@@ -184,7 +176,7 @@ public class Publish extends Activity implements View.OnClickListener {
                 }
                 final String publishcontent = binding.publishText.getText().toString();//获取发表内容
                 final int money = Integer.parseInt(binding.publishMoney.getText().toString());//获取悬赏金额
-                final int people = Integer.parseInt(binding.publishPeople.getText().toString());
+                final int people = Integer.parseInt(binding.publishPeople.getText().toString());*/
                 //选择了图片，上传
                 final Dialog mydialog = new Progress_dialog(Publish.this).createLoadingDialog("111");
                 mydialog.show();
@@ -285,7 +277,7 @@ public class Publish extends Activity implements View.OnClickListener {
 //测试阿里云oss
                 final ArrayList<String> imgs=new ArrayList<>();
 
-                final AliOss aliOss = new AliOss(this);
+                final AliOss aliOss=AliOss.getAliOss() ;
                 Observable.create(new Observable.OnSubscribe<List<MyPhotoInfo>>() {
 
                     @Override
@@ -323,11 +315,11 @@ public class Publish extends Activity implements View.OnClickListener {
                     public void onCompleted() {
                         //更新到Bmob后端
                         Clocle_help help = new Clocle_help();
-                        help.setContent(publishcontent);
+                       /* help.setContent(publishcontent);
                         help.setImgs(imgs);
                         help.setPeopleNum(people);
                         help.setTag("tag");
-                        help.setSum_clocle_money(money);
+                        help.setSum_clocle_money(money);*/
                         help.setBmob_userBean(bean);
                         help.save(new SaveListener<String>() {
                             @Override

@@ -17,6 +17,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.bean.ImageInfo;
+import com.bumptech.glide.Glide;
 import com.clocle.huxiang.clocle.R;
 import com.common_tool.ImageFactory;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -39,12 +41,13 @@ import rx.schedulers.Schedulers;
  */
 
 public class Picked_photo_adapter extends BaseAdapter {
-    private List<PhotoInfo> photoInfoList;
+    private List<ImageInfo> photoInfoList;
     private LayoutInflater inflater;
-
-    public Picked_photo_adapter(Context mcontext, List<PhotoInfo> infoList) {
+private Context context;
+    public Picked_photo_adapter(Context mcontext, List<ImageInfo> infoList) {
         this.inflater = LayoutInflater.from(mcontext);
         this.photoInfoList = infoList;
+        this.context=mcontext;
     }
 
     @Override
@@ -66,10 +69,10 @@ public class Picked_photo_adapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         final SinglePhotoVH holder;
         if (convertView == null) {
-convertView=inflater.inflate(R.layout.picked_photo_item,parent,false);
-            holder=new SinglePhotoVH();
-            holder.imgview= (DynamicHWimageview) convertView.findViewById(R.id.picked_photo_item);
-        holder.imageButton= (ImageButton) convertView.findViewById(R.id.photo_clear);
+            convertView = inflater.inflate(R.layout.picked_photo_item, parent, false);
+            holder = new SinglePhotoVH();
+            holder.imgview = (DynamicHWimageview) convertView.findViewById(R.id.picked_photo_item);
+            holder.imageButton = (ImageButton) convertView.findViewById(R.id.photo_clear);
             holder.imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -78,26 +81,29 @@ convertView=inflater.inflate(R.layout.picked_photo_item,parent,false);
                 }
             });
             convertView.setTag(holder);
-        }
-        else {
-            holder= (SinglePhotoVH) convertView.getTag();
+        } else {
+            holder = (SinglePhotoVH) convertView.getTag();
         }
 
+        Glide.with(context)
+                .load(photoInfoList.get(position).url)
+                .into(holder.imgview);
+        holder.imageButton.setVisibility(View.VISIBLE);
         //RxJava异步压缩图片
-       //1.创建被观察者
+        //1.创建被观察者
 
-        Observable.create(new Observable.OnSubscribe<String>() {
+/*        Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
                 //发出事件,即将图片URL发给订阅者
-                subscriber.onNext(photoInfoList.get(position).getPhotoPath());
+                subscriber.onNext(photoInfoList.get(position));
             }
             //将压缩操作切换到新的线程
         }).subscribeOn(Schedulers.newThread())
                 //指定为IO线程
                 .observeOn(Schedulers.io())
                 //链式调用，变换，将url转化为Bitmap
-                .map(new Func1<String,Bitmap>() {
+                .map(new Func1<String, Bitmap>() {
                     @Override
                     public Bitmap call(String url) {
                         //自定义方法，根据路径进行压缩
@@ -109,7 +115,7 @@ convertView=inflater.inflate(R.layout.picked_photo_item,parent,false);
                 .subscribe(new Subscriber<Bitmap>() {
                     @Override
                     public void onCompleted() {
-Log.i("TAG","晚餐晚餐");
+                        Log.i("TAG", "晚餐晚餐");
                     }
 
                     @Override
@@ -123,8 +129,8 @@ Log.i("TAG","晚餐晚餐");
                         holder.imgview.setImageBitmap(bitmap);
                         holder.imageButton.setVisibility(View.VISIBLE);
                     }
-                });
-       return convertView;
+                });*/
+        return convertView;
     }
 
     class SinglePhotoVH {
