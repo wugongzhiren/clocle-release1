@@ -15,8 +15,10 @@ import com.alibaba.mobileim.YWIMKit;
 import com.alibaba.wxlib.util.SysUtil;*/
 import com.clocle.huxiang.clocle.Bmob_UserBean;
 import com.common_tool.FrescoImageLoader;
+import com.constant.Constant;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.http.ToStringConverterFactory;
 
 
 import aliyun.AliOss;
@@ -30,6 +32,8 @@ import cn.finalteam.galleryfinal.ThemeConfig;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
 import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Administrator on 2016/7/26.
@@ -157,7 +161,14 @@ String testtoken="0GxyEvHDQqKuu9T+21VAScouCHXzYZWucMXTL4Cxm0sdLCBYt4wPAcjEhK+6xf
         return null;
     }
 
-
-
+    public static Retrofit getRetrofit() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(new ToStringConverterFactory())
+                .addConverterFactory(GsonConverterFactory.create())//解析方法
+                //这里建议：- Base URL: 总是以/结尾；- @Url: 不要以/开头
+                .baseUrl(Constant.BASEURL)
+                .build();
+        return retrofit;
+    }
 
 }

@@ -1,25 +1,19 @@
 package tool;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bean.Message;
 import com.bean.Messages;
 import com.clocle.huxiang.clocle.R;
-import com.httpThread.Image_Loader;
+import com.http.Image_Loader;
 
 
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Request;
 
 /**首页的adapter
  * Created by Administrator on 2016/7/17.

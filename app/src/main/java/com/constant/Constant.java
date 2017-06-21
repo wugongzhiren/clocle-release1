@@ -14,4 +14,6 @@ public  final class Constant {
 
 
     public static final int IMAGESELECTOR=100;//打开图片选择器选择图片
+
+    public static final String BASEURL="http://192.168.1.105:8888/";//成功
 }

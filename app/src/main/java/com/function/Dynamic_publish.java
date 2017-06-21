@@ -21,12 +21,14 @@ import android.widget.Toast;
 
 import com.Base_activity;
 import com.adapter.Picked_photo_adapter;
+import com.application.App;
 import com.bean.Dynamic;
 import com.bean.ImageInfo;
 import com.clocle.huxiang.clocle.Bmob_UserBean;
 import com.clocle.huxiang.clocle.R;
 import com.common_tool.ImageFactory;
 import com.constant.Constant;
+import com.http.repository.DynamicManage;
 import com.imageselector.MultiImageSelectorActivity;
 import com.imageselector.view.StartImage;
 
@@ -40,11 +42,14 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadBatchListener;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
+import retrofit2.Call;
+import retrofit2.Retrofit;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+import tool.GetuserInfo;
 import tool.ShowToast;
 
 /**
@@ -60,59 +65,8 @@ public class Dynamic_publish extends Base_activity {
     private List<ImageInfo> radioPhoto = new ArrayList<>();//压缩后图片的信息
     private Picked_photo_adapter picked_photo_adapter;
     private Button button;
-    /*private GalleryFinal.OnHanlderResultCallback mOnHanlderResultCallback = new GalleryFinal.OnHanlderResultCallback() {
-        @Override
-        public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
-            if (resultList != null) {
-                mPhotoList.clear();
-                mPhotoList.addAll(resultList);
-                Observable.create(new Observable.OnSubscribe<String>() {
-                    @Override
-                    public void call(Subscriber<? super String> subscriber) {
-                        for(int i=0;i<mPhotoList.size();i++) {
-                            subscriber.onNext(mPhotoList.get(i).getPhotoPath());
-                        }
-                    }
-                }).subscribeOn(Schedulers.newThread())
-                        //指定为IO线程
-                        .observeOn(Schedulers.io())
-                .map(new Func1<String, String>() {
-                    @Override
-                    public String call(String s) {
-                        //图片压缩，并且返回压缩完成后临时图片路径
-                        Bitmap bm=ImageFactory.ratio(s,480,800);
-                        return ImageFactory.savePhoto(bm,Environment
-                                .getExternalStorageDirectory().getAbsolutePath().toString() + "/clocle/temp_img/",String
-                                .valueOf(System.currentTimeMillis()));
-
-
-                    }
-                }).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
-                    @Override
-                    public void onCompleted()
-                        picked_photo_adapter = new Picked_photo_adapter(Dynamic_publish.this, mPhotoList);
-                        //picked_photo_adapter.notifyDataSetChanged();
-                        gridView.setAdapter(picked_photo_adapter);
-                    }
-
-                    @Override
-                    public void onError(Throwable throwable) {
-
-                    }
-
-                    @Override
-                    public void onNext(String s) {
-                        radioPhotoUrl.add(s);
-                        Log.i("tag",s);
-                    }
-                });
-*/
-
-
-    // Bitmap bm=ImageFactory.ratio(mPhotoList.get(0).getPhotoPath(),480,800);
-
-
+private Retrofit retrofit;
+    private DynamicManage dynamicManage;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,18 +83,12 @@ public class Dynamic_publish extends Base_activity {
                 if (mPhotoList.size() == 0) {
                     Toast.makeText(Dynamic_publish.this, "请添加要分享的图片", Toast.LENGTH_SHORT).show();
                     return;
+                } else {
+//上传到服务器，加密传输
+                    retrofit= App.getRetrofit();
+                    dynamicManage=retrofit.create(DynamicManage.class);
+                    Call<String> call = dynamicManage.publish(new GetuserInfo(mcontext).getUserinfo(),dynamic_ed.getText().toString(),);
                 }
-                //1.压缩图片保存在临时文件夹
-                /*try {
-                    ImageFactory.compressAndGenImage(mPhotoList.get(0).getPhotoPath(),Environment
-                            .getExternalStorageDirectory().getAbsolutePath().toString() + "/clocle/temp_img/",500,false);
-                    Toast.makeText(Dynamic_publish.this,"完成l",Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
-                //2.上传图片
-
-                //3.保存到数据库
             }
         });
         gridView = (GridView) findViewById(R.id.gv_photo_choose);
@@ -220,11 +168,7 @@ public class Dynamic_publish extends Base_activity {
                             @Override
                             public ImageInfo call(String s) {
                                 //图片压缩，并且返回压缩完成后临时图片路径
-                                //return s;
                                 return ImageFactory.ratio(s, 480, 800);
-                                /*return ImageFactory.savePhoto(bm, Environment
-                                        .getExternalStorageDirectory().getAbsolutePath().toString() + "/clocle/temp_img/", String
-                                        .valueOf(System.currentTimeMillis()));*/
                             }
                         }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<ImageInfo>() {
                     @Override
