@@ -14,12 +14,14 @@ import com.alibaba.sdk.android.oss.common.OSSLog;
 import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
 import com.alibaba.sdk.android.oss.common.auth.OSSPlainTextAKSKCredentialProvider;
 import com.alibaba.sdk.android.oss.internal.OSSAsyncTask;
-import com.alibaba.sdk.android.oss.model.ObjectMetadata;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.application.App;
 import com.bean.ImageInfo;
 import com.constant.Constant;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import tool.ShowToast;
 
@@ -29,16 +31,24 @@ import tool.ShowToast;
  */
 
 public class AliOss {
+    private  int count;//上传次数
+    private List<ImageInfo> results=new ArrayList<>();
+    //上传监听接口
+    public interface UploadListener {
+        //上传成功
+        void success(List<ImageInfo> results);
+        void fail();
+    }
     private OSS oss;
     private String endpoint = "oss-cn-shanghai.aliyuncs.com";
     private String bucketName="clocle";
-    private static AliOss instance=new AliOss(App.getContext());
-
+    private static AliOss instance=new AliOss();
+    OSSAsyncTask task;
     //单例模式
     public static AliOss getAliOss(){
         return instance;
     }
-    private  AliOss(Context context){
+    private  AliOss(){
 
 
 // 明文设置secret的方式建议只在测试时使用，更多鉴权模式请参考后面的`访问控制`章节
@@ -50,8 +60,46 @@ public class AliOss {
         conf.setMaxConcurrentRequest(5); // 最大并发请求书，默认5个
         conf.setMaxErrorRetry(2); // 失败后最大重试次数，默认2次
         OSSLog.enableLog();
-        oss = new OSSClient(context, endpoint, credentialProvider,conf);
+        oss = new OSSClient(App.getContext(), endpoint, credentialProvider,conf);
     }
+
+public void startUploadTasks(final List<ImageInfo> o, final UploadListener listener){
+    count=0;
+for (ImageInfo info:o){
+    final PutObjectRequest  put = new PutObjectRequest(bucketName, info.name+".png", ((ImageInfo)info).url);
+    task = oss.asyncPutObject(put, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
+        @Override
+        public void onSuccess(PutObjectRequest request, PutObjectResult result) {
+            count++;
+            results.add(formAliPath(put));
+            if(count==o.size()){
+                //已结上传完成
+                listener.success(results);
+            }
+            Log.d("PutObject", "UploadSuccess");
+        }
+
+        @Override
+        public void onFailure(PutObjectRequest request, ClientException clientExcepion, ServiceException serviceException) {
+            //ShowToast.showToast(App.getContext(),"上传失败");
+            listener.fail();
+            // 请求异常
+            if (clientExcepion != null) {
+                // 本地异常如网络异常等
+                clientExcepion.printStackTrace();
+            }
+            if (serviceException != null) {
+
+                // 服务异常
+                Log.e("ErrorCode", serviceException.getErrorCode());
+                Log.e("RequestId", serviceException.getRequestId());
+                Log.e("HostId", serviceException.getHostId());
+                Log.e("RawMessage", serviceException.getRawMessage());
+            }
+        }
+    });
+}
+}
 
     /**
      * 单张图片异步上传
@@ -103,6 +151,15 @@ public class AliOss {
     }
 
     /**
+     * 取消任务
+     */
+    public void cancleTasks() {
+
+        if (!task.isCompleted()) {
+            task.cancel();
+        }
+    }
+    /**
      * 同步图片上传
      * 三失败返回失败code，
      * 成功返回OSS外链路径
@@ -134,4 +191,15 @@ return "http://"+endpoint+filename;
 
 
 }
+    /**
+     * 拼接远程访问地址
+     *
+     * @param putObjectRequest
+     * @return
+     */
+    private ImageInfo formAliPath(PutObjectRequest putObjectRequest) {
+        ImageInfo info=new ImageInfo();
+        info.url="http://" + putObjectRequest.getBucketName() + "." + endpoint + "/" + putObjectRequest.getObjectKey();
+   return info;
+    }
 }

@@ -55,7 +55,7 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile files('libs/BmobSDK_3.5.2_20161027.jar')
     compile files('libs/aliyun-oss-sdk-android-2.3.0.jar')
-    compile 'com.jakewharton:butterknife:8.6.0'
+    //compile 'com.jakewharton:butterknife:8.6.0'
 }
 
 android {

@@ -84,10 +84,21 @@ private Retrofit retrofit;
                     Toast.makeText(Dynamic_publish.this, "请添加要分享的图片", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
+                    AliOss.getAliOss().startUploadTasks(radioPhoto, new AliOss.UploadListener() {
+                        @Override
+                        public void success(List<ImageInfo> results) {
+ShowToast.showToast(mcontext,"全部上传完成");
+                        }
+
+                        @Override
+                        public void fail() {
+
+                        }
+                    });
 //上传到服务器，加密传输
                     retrofit= App.getRetrofit();
                     dynamicManage=retrofit.create(DynamicManage.class);
-                    Call<String> call = dynamicManage.publish(new GetuserInfo(mcontext).getUserinfo(),dynamic_ed.getText().toString(),);
+                    //Call<String> call = dynamicManage.publish(new GetuserInfo(mcontext).getUserinfo(),dynamic_ed.getText().toString(),);
                 }
             }
         });
@@ -187,7 +198,7 @@ private Retrofit retrofit;
                     public void onNext(ImageInfo s) {
                         if (!radioPhoto.contains(s)) {
                             radioPhoto.add(s);
-                            AliOss.getAliOss().UploadToOssAsyn(s);
+
                         }
                     }
                 });

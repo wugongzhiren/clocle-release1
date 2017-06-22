@@ -12,6 +12,9 @@ public class ImageInfo  {
     public int width;
     public String url;
 
+    public ImageInfo() {
+    }
+
     public ImageInfo(String path, String name, int height, int width) {
         this.path = path;
         this.name = name;

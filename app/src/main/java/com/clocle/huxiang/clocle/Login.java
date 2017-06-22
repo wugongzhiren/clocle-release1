@@ -51,7 +51,7 @@ public class Login extends Activity implements View.OnClickListener {
         }
         else {
            // GetuserInfo getuserInfo =new GetuserInfo(this);
-            getuserInfo.saveUserinfo(name,psword);
+            //getuserInfo.saveUserinfo(name,psword);
             Intent intent = new Intent(this, MainActivity.class);
             //Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
             //intent.setClass(Login.this,MainActivity.class);
