@@ -27,7 +27,7 @@ public class Test3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test);
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+       /* Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -48,10 +48,10 @@ public class Test3 extends AppCompatActivity {
             list.add(i);
         }
        // listView.setAdapter(new Adapter(list,this));
-       /* Uri uri = Uri.parse("http://sqimg.qq.com/qq_product_operations/im/2016/pc/ay/mb65_b.jpg");
+       *//* Uri uri = Uri.parse("http://sqimg.qq.com/qq_product_operations/im/2016/pc/ay/mb65_b.jpg");
         SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
-        draweeView.setImageURI(uri);*/
-     /*   ImageView imageView= (ImageView) findViewById(R.id.imgs);
+        draweeView.setImageURI(uri);*//*
+     *//*   ImageView imageView= (ImageView) findViewById(R.id.imgs);
        // new Image_Loader().loadImagebyAsyncTask(imageView,"http://192.168.1.110:8080/clocle/user_photo/myphoto.png");
         //imageView.setImageBitmap();
         DisplayImageOptions options=new DisplayImageOptions.Builder()
@@ -61,9 +61,9 @@ public class Test3 extends AppCompatActivity {
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
         ImageLoader.getInstance().displayImage("http://192.168.1.110:8080/clocle/user_photo/reg.jpg", imageView, options);
-    }*/
+    }*//*
         RecyclerView view= (RecyclerView) findViewById(R.id.recyclerView);
-        view.setLayoutManager(new LinearLayoutManager(this));
+        view.setLayoutManager(new LinearLayoutManager(this));*/
        // new Clocle_help_AsyncTask(null,null, this, view).execute(Constant.GET_HELP_JSON);
     }
     class Adapter extends BaseAdapter{

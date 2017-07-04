@@ -1,3 +1,4 @@
+/*
 package com.clocle.huxiang.clocle;
 
 import android.app.Activity;
@@ -56,10 +57,12 @@ import tool.Progress_dialog;
 import tool.ShowToast;
 import tool.Utils;
 
+*/
 /**
  * 圈圈帮的发表悬赏页面（还需要优化）
  * Created by Administrator on 2016/7/26.
- */
+ *//*
+
 public class Publish extends Activity implements View.OnClickListener {
     private List<MyPhotoInfo> radioPhotoUrl = new ArrayList<>();//压缩后图片的临时路径
     private RecyclerView recyclerView;
@@ -161,7 +164,8 @@ public class Publish extends Activity implements View.OnClickListener {
                 //ShowToast.showToast(this,"databimgd");
                 //首先上传照片
                 final Bmob_UserBean bean = BmobUser.getCurrentUser(Bmob_UserBean.class);
-               /* //页面输入项检查
+               */
+/* //页面输入项检查
                 if (binding.publishText.getText().toString().equals("")) {
                     ShowToast.showToast(this, "请输入求助内容");
                     return;
@@ -176,11 +180,13 @@ public class Publish extends Activity implements View.OnClickListener {
                 }
                 final String publishcontent = binding.publishText.getText().toString();//获取发表内容
                 final int money = Integer.parseInt(binding.publishMoney.getText().toString());//获取悬赏金额
-                final int people = Integer.parseInt(binding.publishPeople.getText().toString());*/
+                final int people = Integer.parseInt(binding.publishPeople.getText().toString());*//*
+
                 //选择了图片，上传
                 final Dialog mydialog = new Progress_dialog(Publish.this).createLoadingDialog("111");
                 mydialog.show();
-                    /*BmobFile.uploadBatch(urlArr, new UploadBatchListener() {
+                    */
+/*BmobFile.uploadBatch(urlArr, new UploadBatchListener() {
                         @Override
                         public void onSuccess(List<BmobFile> list, List<String> list1) {
                             if (list1.size() == urlArr.length) {
@@ -216,9 +222,11 @@ public class Publish extends Activity implements View.OnClickListener {
                             Toast.makeText(Publish.this, s, Toast.LENGTH_SHORT).show();
                         }
                     });
-                }*/
+                }*//*
+
                 //用户没有选择添加图片
-                /*else {
+                */
+/*else {
                     Clocle_help help = new Clocle_help();
                     help.setContent(publishcontent);
                     help.setPeopleNum(people);
@@ -235,7 +243,8 @@ public class Publish extends Activity implements View.OnClickListener {
                             }
                         }
                     });
-                }*/
+                }*//*
+
 
 
                 //  Pulish_bean bean = new Pulish_bean(0, userid,
@@ -244,7 +253,8 @@ public class Publish extends Activity implements View.OnClickListener {
                 //   request_string = obeject_toJson.publish_tojson(bean);//将bean对象转化为json字符串
                 //点击button开启一个线程，线程中的网络请求又是一个异步请求，但是这个网络请求的线程非系统的主线程
                 //所以必须通过Asynctask或者handle，或者runonuithread的方式来进行UI操作
-            /*    new Thread() {
+            */
+/*    new Thread() {
                     @Override
                     public void run() {
 
@@ -273,7 +283,8 @@ public class Publish extends Activity implements View.OnClickListener {
 
 
                     }
-                }.start();*/
+                }.start();*//*
+
 //测试阿里云oss
                 final ArrayList<String> imgs=new ArrayList<>();
 
@@ -315,11 +326,13 @@ public class Publish extends Activity implements View.OnClickListener {
                     public void onCompleted() {
                         //更新到Bmob后端
                         Clocle_help help = new Clocle_help();
-                       /* help.setContent(publishcontent);
+                       */
+/* help.setContent(publishcontent);
                         help.setImgs(imgs);
                         help.setPeopleNum(people);
                         help.setTag("tag");
-                        help.setSum_clocle_money(money);*/
+                        help.setSum_clocle_money(money);*//*
+
                         help.setBmob_userBean(bean);
                         help.save(new SaveListener<String>() {
                             @Override
@@ -362,3 +375,4 @@ public class Publish extends Activity implements View.OnClickListener {
 
 
 
+*/

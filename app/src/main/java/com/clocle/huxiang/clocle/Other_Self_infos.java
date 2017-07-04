@@ -110,7 +110,7 @@ private Bmob_UserBean bean;
             @Override
             public void done(List<Dynamic> list, BmobException e) {
                 if(e==null){
-                    recycleview.setAdapter(new Dynamic_Rv_Adapter(Other_Self_infos.this,list));
+                    recycleview.setAdapter(new Dynamic_Rv_Adapter(Other_Self_infos.this));
                 }
             }
         });

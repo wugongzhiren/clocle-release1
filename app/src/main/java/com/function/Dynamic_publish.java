@@ -41,7 +41,6 @@ import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadBatchListener;
-import cn.finalteam.galleryfinal.model.PhotoInfo;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import rx.Observable;
@@ -84,7 +83,49 @@ private Retrofit retrofit;
                     Toast.makeText(Dynamic_publish.this, "请添加要分享的图片", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    AliOss.getAliOss().startUploadTasks(radioPhoto, new AliOss.UploadListener() {
+                    //异步文件上传
+                    Observable.create(new Observable.OnSubscribe<ImageInfo>() {
+                        @Override
+                        public void call(Subscriber<? super ImageInfo> subscriber) {
+                            for (int i = 0; i < radioPhoto.size(); i++) {
+                                subscriber.onNext(radioPhoto.get(i));
+                            }
+                            subscriber.onCompleted();
+                        }
+                    }).subscribeOn(Schedulers.newThread())
+                            //指定为IO线程
+                            .observeOn(Schedulers.io())
+                            .map(new Func1<ImageInfo, String>() {
+                                @Override
+                                public String call(ImageInfo s) {
+                                    //图片上传，并且返回上传结果
+                                    return AliOss.getAliOss().UploadToOssSync(s.name+".png",s.url);
+                                }
+                            }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
+                        @Override
+                        public void onCompleted() {
+
+                            ShowToast.showToast(mcontext,"图片上传成功");
+                        }
+
+                        @Override
+                        public void onError(Throwable throwable) {
+
+                        }
+
+                        @Override
+                        public void onNext(String s) {
+                            if (Constant.FAIL.equals(s)) {
+                                //ShowToast.showToast(mcontext,"图片上传失败");
+                                if (!this.isUnsubscribed()) {
+                                    ShowToast.showToast(mcontext,"图片上传失败");
+                                    this.unsubscribe();
+                                }
+                            }
+
+                        }
+                    });
+/*                    AliOss.getAliOss().startUploadTasks(radioPhoto, new AliOss.UploadListener() {
                         @Override
                         public void success(List<ImageInfo> results) {
 ShowToast.showToast(mcontext,"全部上传完成");
@@ -94,7 +135,7 @@ ShowToast.showToast(mcontext,"全部上传完成");
                         public void fail() {
 
                         }
-                    });
+                    });*/
 //上传到服务器，加密传输
                     retrofit= App.getRetrofit();
                     dynamicManage=retrofit.create(DynamicManage.class);

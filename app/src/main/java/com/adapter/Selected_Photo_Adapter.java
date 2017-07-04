@@ -17,8 +17,6 @@ import com.view.DynamicHWimageview;
 
 import java.util.ArrayList;
 
-import cn.finalteam.galleryfinal.FunctionConfig;
-import cn.finalteam.galleryfinal.GalleryFinal;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -34,13 +32,13 @@ public class Selected_Photo_Adapter extends RecyclerView.Adapter<RecyclerView.Vi
     private LayoutInflater inflater;
     private int type0 = 0;//图片
     private int type1 = 1;//添加图片
-    public GalleryFinal.OnHanlderResultCallback mOnHanlderResultCallback;
+
 public ArrayList<String> urlList=new ArrayList<>();
-    public Selected_Photo_Adapter(Context context, ArrayList<String> urlList,GalleryFinal.OnHanlderResultCallback mOnHanlderResultCallback) {
+    public Selected_Photo_Adapter(Context context, ArrayList<String> urlList) {
         //urlList=new ArrayList<>();
         this.urlList=urlList;
         inflater = LayoutInflater.from(context);
-        this.mOnHanlderResultCallback=mOnHanlderResultCallback;
+
     }
 
     @Override
@@ -145,13 +143,7 @@ class ViewHolderWithAddPhoto extends RecyclerView.ViewHolder {
         mimageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FunctionConfig config = new FunctionConfig.Builder()
-                        .setMutiSelectMaxSize(9)
-                        .setSelected(urlList)
-                        .setEnablePreview(true)
-                        .setEnableCamera(true)
-                        .build();
-                GalleryFinal.openGalleryMuti(1001, config, mOnHanlderResultCallback);
+
             }
         });
         //int width = mimageview.getLayoutParams().width = (getResources().getDisplayMetrics().widthPixels - 15) / 4;

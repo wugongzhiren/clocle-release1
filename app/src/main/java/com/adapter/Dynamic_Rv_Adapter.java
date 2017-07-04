@@ -14,6 +14,7 @@ import com.clocle.huxiang.clocle.R;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.function.Dynamic_Detail;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,14 +23,13 @@ import java.util.List;
  */
 
 public class Dynamic_Rv_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<Dynamic> list;
+    private List<Dynamic> list =new ArrayList<>();
     private LayoutInflater inflater;
     private Context mcontext;
 
 
 
-    public Dynamic_Rv_Adapter(Context context, List<Dynamic> dynamicList) {
-        this.list = dynamicList;
+    public Dynamic_Rv_Adapter(Context context) {
         inflater = LayoutInflater.from(context);
         this.mcontext=context;
     }
@@ -93,5 +93,11 @@ public class Dynamic_Rv_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     mcontext.startActivity(intent);
             }
         }
+    }
+    public void setDatas(List<Dynamic> dynamics){
+        list.clear();
+        list.addAll(dynamics);
+        notifyDataSetChanged();
+
     }
 }

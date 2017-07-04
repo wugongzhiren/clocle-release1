@@ -5,24 +5,53 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.design.widget.AppBarLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.clocle.huxiang.clocle.R;
+import com.view.rv.NumAdapter;
+import com.view.rv.SWPullRecyclerLayout;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * Created by Administrator on 2016/7/31.
  */
 public class Test1 extends Activity{
-
+    private SWPullRecyclerLayout recycler;
+    private View header;
+    private View footer;
+    private AppBarLayout appBarLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_layout);
         //启动会话界面
-
+        //初始化列表页面
+       /* recycler = (SWPullRecyclerLayout) findViewById(R.id.recycler);
+        //recycler.setItemDivider(true);
+        appBarLayout = (AppBarLayout) findViewById(R.id.layout_appbar);
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            list.add(i + 1 + "");
+        }
+        //初始化head和footerview
+        header =  LayoutInflater.from(this).inflate(R.layout.header, null);
+        footer = LayoutInflater.from(this).inflate(R.layout.footer, null);
+        //footer.setT;
+        //将head和foot添加到listview
+        recycler.addHeaderView(header, 100);
+        recycler.addFooterView(footer, 100);
+        NumAdapter adapter = new NumAdapter(this, list);
+        recycler.setMyRecyclerView(new LinearLayoutManager(this), adapter);*/
+        //recycler.addOnTouchUpListener(this);
       /*//  ImageView myimag= (ImageView) findViewById(R.id.imgs);
         Bitmap map= BitmapFactory.decodeFile(Environment
                 .getExternalStorageDirectory().getAbsolutePath().toString()+"/clocle_img/"+"myphoto.png");

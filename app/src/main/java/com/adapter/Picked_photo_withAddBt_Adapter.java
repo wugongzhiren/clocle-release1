@@ -1,3 +1,4 @@
+/*
 package com.adapter;
 
 import android.content.Context;
@@ -18,14 +19,10 @@ import com.view.DynamicHWimageview;
 
 import java.util.List;
 
-import cn.finalteam.galleryfinal.FunctionConfig;
-import cn.finalteam.galleryfinal.GalleryFinal;
-import cn.finalteam.galleryfinal.model.PhotoInfo;
 
-/**
- * 附带添加图片的图片选择器的adapter
- * Created by Administrator on 2016/12/28.
- */
+
+
+
 
 public class Picked_photo_withAddBt_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private LayoutInflater inflater;
@@ -133,3 +130,4 @@ public class Picked_photo_withAddBt_Adapter extends RecyclerView.Adapter<Recycle
         }
     }
 }
+*/

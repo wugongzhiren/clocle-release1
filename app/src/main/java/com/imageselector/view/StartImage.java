@@ -17,7 +17,7 @@ import com.Base_activity;
 import com.clocle.huxiang.clocle.R;
 import com.imageselector.MultiImageSelectorActivity;
 
-/**
+/**测试图片选择器的类，可以删除
  * Created by Administrator on 2017/6/15.
  */
 
@@ -26,7 +26,7 @@ public class StartImage extends Base_activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_layout);
-        Button button= (Button) findViewById(R.id.test);
+        Button button= new Button(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

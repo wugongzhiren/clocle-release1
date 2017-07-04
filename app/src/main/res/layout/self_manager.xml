@@ -86,7 +86,7 @@
 
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/gf_title_bar_height"
+                android:layout_height="50dp"
                 android:background="#732291">
 
             </android.support.v7.widget.Toolbar>

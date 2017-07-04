@@ -1,8 +1,11 @@
+/*
 package com.adapter;
 
+*/
 /**
  * Created by Administrator on 2016/10/17.
- */
+ *//*
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -21,10 +24,8 @@ import com.clocle.huxiang.clocle.R;
 import com.common_tool.ImageFactory;
 import com.facebook.drawee.view.SimpleDraweeView;
 
-import cn.finalteam.galleryfinal.FunctionConfig;
-import cn.finalteam.galleryfinal.GalleryFinal;
-import cn.finalteam.galleryfinal.model.PhotoInfo;
-import cn.finalteam.toolsfinal.DeviceUtils;
+
+import io.rong.imlib.common.DeviceUtils;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -33,24 +34,26 @@ import rx.schedulers.Schedulers;
 
 import java.util.List;
 
+*/
 /**
  * Desction:
  * Author:pengjianbo
  * Date:15/12/1 下午8:42
- */
+ *//*
+
 public class ChoosePhotoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<PhotoInfo> mList;
     private LayoutInflater mInflater;
-    private int mScreenWidth;
+    private int mScreenWidth;//
     private int type0 = 0;//图片
     private int type1 = 1;//添加图片
-    private GalleryFinal.OnHanlderResultCallback callback;
 
-    public ChoosePhotoListAdapter(Activity activity, List<PhotoInfo> list,GalleryFinal.OnHanlderResultCallback callback) {
+
+    public ChoosePhotoListAdapter(Activity activity, List<PhotoInfo> list) {
         this.mList = list;
         this.mInflater = LayoutInflater.from(activity);
         this.mScreenWidth = DeviceUtils.getScreenPix(activity).widthPixels;
-        this.callback=callback;
+
     }
 
     @Override
@@ -133,7 +136,8 @@ public class ChoosePhotoListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
     }
 
-   /*
+   */
+/*
         SimpleDraweeView ivPhoto = (SimpleDraweeView) mInflater.inflate(R.layout.single_img, null);
         setHeight(ivPhoto);
 
@@ -145,7 +149,8 @@ public class ChoosePhotoListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private void setHeight(final View convertView) {
         int height = mScreenWidth / 3 - 8;
         convertView.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
-    }*/
+    }*//*
+
 
     class ViewHolderWithAddPhoto extends RecyclerView.ViewHolder {
         private ImageView mimageview;
@@ -158,14 +163,7 @@ public class ChoosePhotoListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             mimageview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    FunctionConfig config = new FunctionConfig.Builder()
-                            .setMutiSelectMaxSize(8)
-                            .setEnablePreview(true)
-                            .setEnableCamera(true)
 
-                    .setSelected(mList)
-                            .build();
-                    GalleryFinal.openGalleryMuti(1001, config, callback);
 //                    Intent intent = new Intent(Publish.this, Test_imageloader.class);
   //                  startActivityForResult(intent, 401);
                 }
@@ -198,4 +196,4 @@ public class ChoosePhotoListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             });
         }
     }
-}
+}*/

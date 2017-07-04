@@ -4,33 +4,23 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
-import android.widget.Toast;
 
 
 /*import com.alibaba.mobileim.YWAPI;
 import com.alibaba.mobileim.YWIMKit;
 import com.alibaba.wxlib.util.SysUtil;*/
 import com.clocle.huxiang.clocle.Bmob_UserBean;
-import com.common_tool.FrescoImageLoader;
 import com.constant.Constant;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.http.ToStringConverterFactory;
 
 
-import aliyun.AliOss;
 import cn.bmob.v3.Bmob;
-import cn.finalteam.galleryfinal.CoreConfig;
-import cn.finalteam.galleryfinal.FunctionConfig;
-import cn.finalteam.galleryfinal.GalleryFinal;
-import cn.finalteam.galleryfinal.ThemeConfig;
+
 
 
 import io.rong.imkit.RongIM;
-import io.rong.imlib.RongIMClient;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -115,25 +105,10 @@ String testtoken="0GxyEvHDQqKuu9T+21VAScouCHXzYZWucMXTL4Cxm0sdLCBYt4wPAcjEhK+6xf
 
 //设置主题
 //ThemeConfig.CYAN
-        ThemeConfig theme = new ThemeConfig.Builder()
-                .build();
-//配置功能
-        FunctionConfig functionConfig = new FunctionConfig.Builder()
-                .setEnableCamera(true)
-                .setMutiSelectMaxSize(9)
-                .setEnableEdit(true)
-                .setEnableCrop(true)
-                .setEnableRotate(true)
-                .setCropSquare(true)
-                .setEnablePreview(true)
-                .build();
 
-//配置imageloader
-        cn.finalteam.galleryfinal.ImageLoader imageloader = new FrescoImageLoader(this);
-        CoreConfig coreConfig = new CoreConfig.Builder(context, imageloader, theme)
-                .setFunctionConfig(functionConfig)
-                .build();
-        GalleryFinal.init(coreConfig);
+//配置功能
+
+
     }
 
     public static Context getContext() {

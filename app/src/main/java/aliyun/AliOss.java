@@ -65,24 +65,26 @@ public class AliOss {
 
 public void startUploadTasks(final List<ImageInfo> o, final UploadListener listener){
     count=0;
-for (ImageInfo info:o){
-    final PutObjectRequest  put = new PutObjectRequest(bucketName, info.name+".png", ((ImageInfo)info).url);
+//for (ImageInfo info:o){
+    final PutObjectRequest  put = new PutObjectRequest(bucketName, o.get(0).name+".png", o.get(0).url);
     task = oss.asyncPutObject(put, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
         @Override
         public void onSuccess(PutObjectRequest request, PutObjectResult result) {
             count++;
             results.add(formAliPath(put));
-            if(count==o.size()){
+
+            ShowToast.showToast(App.getContext(),"成功");
+            /*if(count==o.size()){
                 //已结上传完成
                 listener.success(results);
-            }
+            }*/
             Log.d("PutObject", "UploadSuccess");
         }
 
         @Override
         public void onFailure(PutObjectRequest request, ClientException clientExcepion, ServiceException serviceException) {
             //ShowToast.showToast(App.getContext(),"上传失败");
-            listener.fail();
+           // listener.fail();
             // 请求异常
             if (clientExcepion != null) {
                 // 本地异常如网络异常等
@@ -98,7 +100,7 @@ for (ImageInfo info:o){
             }
         }
     });
-}
+//}
 }
 
     /**

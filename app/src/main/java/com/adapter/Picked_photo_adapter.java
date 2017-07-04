@@ -27,7 +27,6 @@ import com.view.DynamicHWimageview;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.finalteam.galleryfinal.model.PhotoInfo;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;

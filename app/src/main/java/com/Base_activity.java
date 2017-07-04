@@ -8,11 +8,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.application.App;
+
 /**
  * Created by Administrator on 2016/10/11.
  */
 public class Base_activity extends AppCompatActivity implements View.OnClickListener {
-    public Context mcontext=this;
+    public Context mcontext= App.getContext();
     /**
      * 初始化状态栏相关，
      * PS: 设置全屏需要在调用super.onCreate(arg0);之前设置setIsFullScreen(true);否则在Android 6.0下非全屏的activity会出错;

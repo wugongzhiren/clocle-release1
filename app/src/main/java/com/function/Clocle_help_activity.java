@@ -25,7 +25,8 @@ import com.adapter.Rv_single_imgs_adapter;
 import com.bean.ADInfo;
 import com.bean.Clocle_help;
 import com.bean.Messages;
-import com.clocle.huxiang.clocle.Publish;
+
+import com.clocle.huxiang.clocle.MainActivity;
 import com.clocle.huxiang.clocle.R;
 import com.common_tool.ImageFactory;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -198,7 +199,7 @@ public class Clocle_help_activity extends AppCompatActivity {
                     case Menu.FIRST + 0:
                         Toast.makeText(Clocle_help_activity.this, "求助",
                                 Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(Clocle_help_activity.this, Publish.class);
+                        Intent intent = new Intent(Clocle_help_activity.this, MainActivity.class);
                         startActivityForResult(intent, 301);
                         break;
                     case Menu.FIRST + 1:

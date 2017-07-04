@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.LazyFrament;
 import com.adapter.Dynamic_Rv_Adapter;
 import com.bean.Dynamic;
 import com.bean.Message;
@@ -28,6 +29,7 @@ import com.function.Dynamic_Detail;
 import com.function.Dynamic_publish;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.view.EmptyRecleView;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
@@ -47,10 +49,12 @@ import java.util.List;
  * 首页
  * Created by Administrator on 2016/7/6.
  */
-public class Index_fg extends android.support.v4.app.Fragment{
+public class Index_fg extends LazyFrament{
+    // 标志位，标志已经初始化完成。
+    private boolean isPrepared;
     public   List<Dynamic> messages= new ArrayList<Dynamic>();;//动态的数据
     public  Myadpter myadapter;
-    private RecyclerView recyclerView;
+    private EmptyRecleView recyclerView;
     private FloatingActionButton dynamic_action_bt;
     private LinearLayout linearLayout;
 
@@ -68,11 +72,14 @@ public class Index_fg extends android.support.v4.app.Fragment{
         });
         /*linearLayout= (LinearLayout) view.findViewById(R.id.dynamic_content);
         linearLayout.setOnClickListener(this);*/
-        recyclerView= (RecyclerView) view.findViewById(R.id.main_rv);
-       // StaggeredGridLayoutManager mLayoutManager = new StaggeredGridLayoutManager( 2 , StaggeredGridLayoutManager. VERTICAL ); //两列，纵向排列
+        recyclerView= (EmptyRecleView) view.findViewById(R.id.main_rv);
+        StaggeredGridLayoutManager mLayoutManager = new StaggeredGridLayoutManager( 2 , StaggeredGridLayoutManager.VERTICAL ); //两列，纵向排列
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity())) ;
-        initData();
+        recyclerView.setLayoutManager(mLayoutManager) ;
+        //XXX初始化view的各控件
+        isPrepared = true;
+        lazyLoad();
+
 
 
         return view;
@@ -89,14 +96,21 @@ public class Index_fg extends android.support.v4.app.Fragment{
             public void done(List<Dynamic> list, BmobException e) {
                 if(e==null){
                     messages.addAll(list);
-                    recyclerView.setAdapter(new Dynamic_Rv_Adapter(getActivity(),messages));
+                    recyclerView.setAdapter(new Dynamic_Rv_Adapter(getActivity()));
                 }
             }
         });
     }
 
 
-
+    @Override
+    protected void lazyLoad() {
+        if(!isPrepared || !isVisible) {
+            return;
+        }
+        //填充各控件的数据
+        initData();
+    }
 }
 
 
