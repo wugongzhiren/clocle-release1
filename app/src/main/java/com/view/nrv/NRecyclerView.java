@@ -2,6 +2,7 @@ package com.view.nrv;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.os.Parcelable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,9 +10,12 @@ import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.clocle.huxiang.clocle.R;
 import com.view.nrv.base.BaseLayout;
 import com.view.nrv.base.BaseLoaderView;
 import com.view.nrv.base.BaseRefreshView;
@@ -76,6 +80,13 @@ public class NRecyclerView extends BaseLayout {
 
     private View errorView;
 
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        try {
+            super.onRestoreInstanceState(state);
+        }catch (Exception e) {}
+        state=null;
+    }
 
     /**
      * Add load error view that contain Adventure view.
@@ -90,8 +101,10 @@ public class NRecyclerView extends BaseLayout {
 
         errorView = view;
         LayoutParams lp = null;
+        //wrap_content
         if(isWrap)
             lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        //match_parent
         else{
             Rect rect = new Rect();
             getGlobalVisibleRect(rect);
@@ -109,6 +122,12 @@ public class NRecyclerView extends BaseLayout {
      */
     public void removeErrorView(){
         if(AdtureView != null && errorView != null){
+            if(footerView != null)
+                footerView.setVisibility(VISIBLE);
+            AdtureView.removeView(errorView);
+            errorView = null;
+        }
+        if(errorView != null){
             if(footerView != null)
                 footerView.setVisibility(VISIBLE);
             AdtureView.removeView(errorView);
@@ -133,7 +152,7 @@ public class NRecyclerView extends BaseLayout {
 
 
     /**
-     * The entry view that you can use recyclerview or custom by yourself.
+     * 创建Recyclview，可以添加自定义的Recycleview
      * @param context
      * @param attrs
      * @param innerView
@@ -166,6 +185,7 @@ public class NRecyclerView extends BaseLayout {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+//如果 dx>0 则表示 右滑 ， dx<0 表示 左滑 dy <0 表示 上滑， dy>0 表示下滑
 
                 if(dy < 0 )
                     orientation = CONTENT_VIEW_SCROLL_ORIENTATION.UP;
@@ -185,14 +205,21 @@ public class NRecyclerView extends BaseLayout {
                 if(firstView != null){
                     if(IsFirstItem && getLocalRectPosition(firstView).top ==0){
 
-                        if(!isRefreshing)
+                        if(!isRefreshing) {
+                            Log.d("tag", "pullOverScroll()");
+
+                            //下滑惯性，会将下拉刷新的view带出来一点
                             pullOverScroll();
+                        }
                         else{
+                            Log.d("tag","pullEventWhileLoadData()");
+                            //SCROLL_STATE_DRAGGING表示当前RecyclerView处于滑动状态（手指在屏幕上）
                             if(scrollState != RecyclerView.SCROLL_STATE_DRAGGING)
                                 pullEventWhileLoadData(-1);
                         }
                     }
                 }
+
 
                 View lastView = contentView.getChildAt(contentView.getChildCount()-1);
                 if(lastView != null){
@@ -356,6 +383,18 @@ public class NRecyclerView extends BaseLayout {
             throw new IllegalStateException("You hasn't add contentView in baseLayout");
     }
 
+    /**
+     * 设置不显示rv刷新的动画效果
+     */
+    public void setNoItemAnimator(boolean isNouseItemAnimator){
+        if(isNouseItemAnimator) {
+            if (contentView != null) {
+                ((RecyclerView) contentView).getItemAnimator().setChangeDuration(0);
+            } else
+                throw new IllegalStateException("You hasn't add contentView in baseLayout");
+        }
+    }
+
     @Override
     protected ViewGroup CreateLoadView(Context context) {
         LinearLayout footerView = new LinearLayout(context);
@@ -504,7 +543,7 @@ public class NRecyclerView extends BaseLayout {
                 }
             }
 
-            if (layoutManager instanceof GridLayoutManager) {
+           /* if (layoutManager instanceof GridLayoutManager) {
                 final GridLayoutManager gridManager = ((GridLayoutManager)
                         layoutManager);
                 gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -525,7 +564,7 @@ public class NRecyclerView extends BaseLayout {
                                 ? gridManager.getSpanCount():1;
                     }
                 });
-            }
+            }*/
         }
 
         @Override

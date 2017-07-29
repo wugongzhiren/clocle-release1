@@ -4,12 +4,11 @@ import com.clocle.huxiang.clocle.Bmob_UserBean;
 
 import java.util.List;
 
-import cn.bmob.v3.BmobObject;
 
 /**
  * Created by Administrator on 2016/9/19.
  */
-public class Clocle_help extends BmobObject{
+public class Clocle_help {
     private String content;
     private Integer peopleNum;
     private Integer sum_clocle_money;

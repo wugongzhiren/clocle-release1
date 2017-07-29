@@ -13,16 +13,18 @@ import com.clocle.huxiang.clocle.Bmob_UserBean;
 import com.constant.Constant;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.google.gson.Gson;
 import com.http.ToStringConverterFactory;
 
 
-import cn.bmob.v3.Bmob;
+
 
 
 
 import io.rong.imkit.RongIM;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -32,12 +34,11 @@ public class App extends Application {
     private OkHttpClient okHttpClient;
     private static Context context;
     private static Bmob_UserBean bean;
-
+private static Gson gson;
 String testtoken="0GxyEvHDQqKuu9T+21VAScouCHXzYZWucMXTL4Cxm0sdLCBYt4wPAcjEhK+6xfzKUJ55QYfUThDvGO6JlAERqQkK28hF1GpB";
     @Override
     public void onCreate() {
         super.onCreate();
-        Bmob.initialize(this, "fbd7c66a38b160c5677a774971be3294");
         RongIM.init(this);
         //阿里OSS初始化
         //AliOss.init(context);
@@ -81,34 +82,6 @@ String testtoken="0GxyEvHDQqKuu9T+21VAScouCHXzYZWucMXTL4Cxm0sdLCBYt4wPAcjEhK+6xf
         //ImageLoad配置
       /*  ImageLoaderConfiguration config1 = ImageLoaderConfiguration.createDefault(this);
         ImageLoader.getInstance().init(config1);*/
-        initGalleryFinal();
-/*//阿里云旺配置
-        final String APP_KEY = "23441577";
-//必须首先执行这部分代码, 如果在":TCMSSevice"进程中，无需进行云旺（OpenIM）和app业务的初始化，以节省内存;
-        SysUtil.setApplication(this);
-        if (SysUtil.isTCMSServiceProcess(this)) {
-            return;
-        }
-//第一个参数是Application Context
-//这里的APP_KEY即应用创建时申请的APP_KEY，同时初始化必须是在主进程中
-        if (SysUtil.isMainProcess()) {
-            YWAPI.init(this, APP_KEY);
-        }*/
-//必须首先执行这部分代码, 如果在":TCMSSevice"进程中，无需进行云旺（OpenIM）和app业务的初始化，以节省内存;
-
-    }
-
-    /**
-     * 配置图片选择器
-     */
-    private void initGalleryFinal() {
-
-//设置主题
-//ThemeConfig.CYAN
-
-//配置功能
-
-
     }
 
     public static Context getContext() {
@@ -140,10 +113,20 @@ String testtoken="0GxyEvHDQqKuu9T+21VAScouCHXzYZWucMXTL4Cxm0sdLCBYt4wPAcjEhK+6xf
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(new ToStringConverterFactory())
                 .addConverterFactory(GsonConverterFactory.create())//解析方法
+                // 针对rxjava2.x
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 //这里建议：- Base URL: 总是以/结尾；- @Url: 不要以/开头
                 .baseUrl(Constant.BASEURL)
                 .build();
         return retrofit;
+    }
+    public static Gson getGson(){
+        if(gson==null){
+            return new Gson();
+        }
+        else {
+            return gson;
+        }
     }
 
 }

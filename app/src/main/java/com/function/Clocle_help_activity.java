@@ -36,10 +36,6 @@ import com.view.CycleViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import tool.RecycleViewAdapter;
 
 
@@ -280,7 +276,7 @@ public class Clocle_help_activity extends AppCompatActivity {
                 //首次进入，预加载
 
                 //new Clocle_help_AsyncTask(pageList,Clocle_help_activity.this.mrefresh, Clocle_help_activity.this, help_recycleview).execute(Constant.GET_HELP_JSON);
-                BmobQuery<Clocle_help> query = new BmobQuery<Clocle_help>();
+               /* BmobQuery<Clocle_help> query = new BmobQuery<Clocle_help>();
                 query.addWhereGreaterThan("peopleNum", 0);
                 query.include("bmob_userBean");
                 query.setLimit(15);
@@ -304,7 +300,7 @@ public class Clocle_help_activity extends AppCompatActivity {
                         }
                     }
                 });
-
+*/
             }
         });
         mrefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -312,7 +308,7 @@ public class Clocle_help_activity extends AppCompatActivity {
             public void onRefresh() {
                 //下拉刷新，我绝对要将当前页面的list给传过去
                 // new Clocle_help_AsyncTask(pageList,mrefresh, Clocle_help_activity.this, help_recycleview).execute(Constant.GET_HELP_JSON);
-                BmobQuery<Clocle_help> query = new BmobQuery<>();
+               /* BmobQuery<Clocle_help> query = new BmobQuery<>();
                 query.addWhereGreaterThan("peopleNum", 0);
                 query.include("bmob_userBean");
                 query.setLimit(15);
@@ -327,7 +323,7 @@ public class Clocle_help_activity extends AppCompatActivity {
                         help_recycleview.setAdapter(new RecycleViewAdapter(Clocle_help_activity.this, list));
                         mrefresh.setRefreshing(false);
                     }
-                });
+                });*/
             }
         });
 

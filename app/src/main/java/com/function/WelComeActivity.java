@@ -20,15 +20,7 @@ import com.clocle.huxiang.clocle.Bmob_UserBean;
 import com.clocle.huxiang.clocle.MainActivity;
 import com.clocle.huxiang.clocle.R;
 import com.clocle.huxiang.clocle.Reg;
-import com.rx.MyRxObservable;
 
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobUser;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /**
  * 欢迎页，判断用户是否登录过，
@@ -68,7 +60,7 @@ private Boolean isLogin = false;
         set.start();*/
 
 
-        Animator animation = AnimatorInflater.loadAnimator(this, R.animator.welcome_animator);
+       /* Animator animation = AnimatorInflater.loadAnimator(this, R.animator.welcome_animator);
         animation.setTarget(mImageView);
         MyRxObservable.add(animation)
                 .subscribeOn(AndroidSchedulers.mainThread())//指定订阅的Observable对象的call方法运行在ui线程中
@@ -126,6 +118,6 @@ private Boolean isLogin = false;
                     public void onNext(String tokenBean) {
                         //只有网络成功才会回调这里，这里可以保存网络数据。
                     }
-                });
+                });*/
     }
 }

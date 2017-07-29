@@ -23,11 +23,7 @@ import com.view.Preview_photo;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.SaveListener;
+
 import tool.ShowToast;
 
 /**
@@ -68,10 +64,10 @@ public class Dynamic_Detail extends AppCompatActivity{
                     usercomment=comment.getHint().toString()+comment.getText().toString();
                 }
 
-                final Dynamic_Comment commentBean=new Dynamic_Comment();
+   /*             final Dynamic_Comment commentBean=new Dynamic_Comment();
                 commentBean.setComment(usercomment);
                 commentBean.setCommentuser(BmobUser.getCurrentUser(Bmob_UserBean.class));
-                commentBean.setDynamicID(mdynamic.getObjectId());
+                //commentBean.setDynamicID(mdynamic.getObjectId());
                 commentBean.save(new SaveListener<String>() {
                     @Override
                     public void done(String s, BmobException e) {
@@ -81,7 +77,7 @@ public class Dynamic_Detail extends AppCompatActivity{
                             comment_adapter.notifyDataSetChanged();
                         }
                     }
-                });
+                });*/
             }
         });
         dynamic_commentList=new ArrayList<>();
@@ -103,8 +99,8 @@ public class Dynamic_Detail extends AppCompatActivity{
 
 
         //加载评论列表
-        BmobQuery<Dynamic_Comment> query=new BmobQuery<>();
-        query.addWhereEqualTo("dynamicID", mdynamic.getObjectId());
+       /* BmobQuery<Dynamic_Comment> query=new BmobQuery<>();
+        //query.addWhereEqualTo("dynamicID", mdynamic.getObjectId());
         query.setLimit(1000);
         query.include("commentuser");
         query.findObjects(new FindListener<Dynamic_Comment>() {
@@ -137,16 +133,16 @@ public class Dynamic_Detail extends AppCompatActivity{
                 }
             }
         });
-
-        photo.setImageURI(mdynamic.getUser().getphotoUrl());
+*/
+        /*photo.setImageURI(mdynamic.getUser().getphotoUrl());
         content.setText(mdynamic.getDynamicContent());
         nickname.setText(mdynamic.getUser().getUsername());
-        single_imgs_adapter=new Rv_single_imgs_adapter(mdynamic.getImgs(),this);
+        single_imgs_adapter=new Rv_single_imgs_adapter(mdynamic.getImgs(),this);*/
         single_imgs_adapter.setOnItemOnclickListener(new Rv_single_imgs_adapter.OnItemOnclickListener() {
             @Override
             public void onItemClick(View view, int pos) {
                 Intent intent =new Intent(Dynamic_Detail.this, Preview_photo.class);
-                intent.putStringArrayListExtra("urlList",((ArrayList)mdynamic.getImgs()));
+                //intent.putStringArrayListExtra("urlList",((ArrayList)mdynamic.getImgs()));
                 intent.putExtra("position",pos);
                 startActivity(intent);
             }

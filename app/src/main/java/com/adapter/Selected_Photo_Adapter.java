@@ -17,12 +17,6 @@ import com.view.DynamicHWimageview;
 
 import java.util.ArrayList;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
-
 /**
  * 已经选择的图片，多个添加图片的图片
  * Created by Administrator on 2016/12/12.
@@ -75,7 +69,7 @@ public ArrayList<String> urlList=new ArrayList<>();
             //RxJava异步压缩图片
             //1.创建被观察者
 
-            Observable.create(new Observable.OnSubscribe<String>() {
+       /*     Observable.create(new Observable.OnSubscribe<String>() {
                 @Override
                 public void call(Subscriber<? super String> subscriber) {
                     //发出事件,即将图片URL发给订阅者
@@ -112,7 +106,7 @@ public ArrayList<String> urlList=new ArrayList<>();
                             ((ViewHolder) holder).pickedphotoView.setImageBitmap(bitmap);
                             ((ViewHolder) holder).mimageButton.setVisibility(View.VISIBLE);
                         }
-                    });
+                    });*/
             //((ViewHolder) holder).pickedphotoView.setImageURI(urlList.get(position));
         } else if (holder instanceof ViewHolderWithAddPhoto) {
             ((ViewHolderWithAddPhoto) holder).mimageview.setImageResource(R.mipmap.addphoto);

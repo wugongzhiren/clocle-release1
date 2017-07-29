@@ -1,23 +1,24 @@
+/*
 package com.rx;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 
-import rx.Observable;
-import rx.Subscriber;
+import io.reactivex.Observable;
 import tool.Utils;
 
-/**
+*
  * Created by Administrator on 2016/11/3.
- */
 
-public class AnimatorOnSubscribe implements Observable.OnSubscribe<Void> {
+
+
+/*public class AnimatorOnSubscribe implements Observable.OnSubscribe<Void> {
     final Animator animator;
 
     public AnimatorOnSubscribe(Animator animator) {
         this.animator = animator;
-    }
-
+    }*/
+/*
     @Override
     public void call(final Subscriber<? super Void> subscriber) {
         Utils.checkUiThread();//检查是否在UI线程调用，否则不能播放动画
@@ -39,3 +40,4 @@ public class AnimatorOnSubscribe implements Observable.OnSubscribe<Void> {
         animator.start();//先绑定监听器再开始
     }
 }
+*/

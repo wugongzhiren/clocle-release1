@@ -2,12 +2,11 @@ package com.bean;
 
 import com.clocle.huxiang.clocle.Bmob_UserBean;
 
-import cn.bmob.v3.BmobObject;
 
 /**
  * Created by Administrator on 2016/9/19.
  */
-public class Clocle_help_coment extends BmobObject {
+public class Clocle_help_coment {
     private String coment;//评论内容
     private Bmob_UserBean commentUser;//评论者
 

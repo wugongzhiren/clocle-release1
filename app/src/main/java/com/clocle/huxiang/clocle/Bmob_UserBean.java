@@ -2,12 +2,10 @@ package com.clocle.huxiang.clocle;
 
 import java.util.ArrayList;
 
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobFile;
 
 
-public class Bmob_UserBean extends BmobUser {
-   private BmobFile userphoto;
+
+public class Bmob_UserBean {
     private String photoUrl;
     private String sex;
     private String school;
@@ -82,11 +80,4 @@ public class Bmob_UserBean extends BmobUser {
         this.photoUrl =photoUrl;
     }
 
-    public BmobFile getUserphoto() {
-        return userphoto;
-    }
-
-    public void setUserphoto(BmobFile userphoto) {
-        this.userphoto = userphoto;
-    }
 }

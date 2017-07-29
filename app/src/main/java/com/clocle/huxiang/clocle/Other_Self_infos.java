@@ -22,9 +22,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
+
 import tool.Bg_blur;
 import tool.ImageLoadFresco;
 
@@ -96,14 +94,14 @@ private Bmob_UserBean bean;
         userphoto.setImageURI(bean.getphotoUrl());
         ImageLoadFresco.getFrescoCacheBitmap(handle, Uri.parse(bean.getphotoUrl()),this);
         //昵称
-        nicknameTv.setText(bean.getUsername());
+        //nicknameTv.setText(bean.getUsername());
 
     }
 
     private void getUserDataFromServer(){
         //从服务器加载数据
         recycleview= (RecyclerView) findViewById(R.id.other_info_rv);
-        BmobQuery<Dynamic> query=new BmobQuery<>();
+      /*  BmobQuery<Dynamic> query=new BmobQuery<>();
         query.include("user");
 
         query.order("-createdAt").findObjects(new FindListener<Dynamic>() {
@@ -113,7 +111,7 @@ private Bmob_UserBean bean;
                     recycleview.setAdapter(new Dynamic_Rv_Adapter(Other_Self_infos.this));
                 }
             }
-        });
+        });*/
     }
 
 

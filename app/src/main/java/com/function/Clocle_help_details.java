@@ -69,7 +69,7 @@ public class Clocle_help_details extends Activity {
         comments = new ArrayList<>();
         //从服务器获取评论
         Bmob_UserBean user=new Bmob_UserBean();
-        user.setUsername("测试666");
+        //user.setUsername("测试666");
         comments.add(new Clocle_help_coment("好的",user,"11231"));
         detailsList.setAdapter(new Detalis_comment_adapter());
     }
@@ -104,7 +104,7 @@ convertView=LayoutInflater.from(Clocle_help_details.this).inflate(R.layout.listv
                 convertView.setTag(holder);
             }
             else holder= (Detalis_comment_holder) convertView.getTag();
-            holder.commentUsernickname.setText(comments.get(position).getCommentUser().getUsername());
+            //holder.commentUsernickname.setText(comments.get(position).getCommentUser().getUsername());
             holder.commentText.setText(comments.get(position).getComent());
             return convertView;
         }

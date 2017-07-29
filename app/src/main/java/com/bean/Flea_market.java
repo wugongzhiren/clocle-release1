@@ -6,13 +6,12 @@ import com.clocle.huxiang.clocle.Bmob_UserBean;
 
 import java.util.List;
 
-import cn.bmob.v3.BmobObject;
 
 /**
  * 跳蚤市场model，和数据库字段对应
  * Created by Administrator on 2016/10/12.
  */
-public class Flea_market extends BmobObject {
+public class Flea_market  {
     private Bmob_UserBean flea_user;//发布者
     private String flea_content;//附带说明内容
     private List<String> flea_imgs;//二手货图片

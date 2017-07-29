@@ -32,7 +32,11 @@
 
         </activity>
         <activity android:name=".Reg">
+            <intent-filter>
+           <action android:name="android.intent.action.MAIN" />
 
+           <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
 
         </activity>
         <activity
@@ -110,6 +114,17 @@
              <category android:name="android.intent.category.LAUNCHER" />
              </intent-filter>-->
         </activity>
+        <!--<activity android:name=".Index_fg">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                &lt;!&ndash;<data
+                    android:host="com.clocle.huxiang.clocle"
+                    android:pathPrefix="/conversationlist"
+                    android:scheme="rong"/>&ndash;&gt;
+            </intent-filter>
+        </activity>-->
         <activity android:name="test.Test3">
 
         </activity>
@@ -189,14 +204,7 @@
 
         </activity>
         <activity android:name="test.PullAndPush">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <!--<data
-                    android:host="com.clocle.huxiang.clocle"
-                    android:pathPrefix="/conversationlist"
-                    android:scheme="rong"/>-->
-            </intent-filter>
+
         </activity>
     </application>
 

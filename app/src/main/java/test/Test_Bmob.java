@@ -12,16 +12,7 @@ import com.clocle.huxiang.clocle.Bmob_UserBean;
 import com.clocle.huxiang.clocle.R;
 import com.common_tool.ImageFactory;
 
-import java.io.File;
-import java.util.List;
 
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.SaveListener;
-import tool.DecodeSampleBitmapFromUrl;
-import tool.RecycleViewAdapter;
 
 
 /**
@@ -33,7 +24,7 @@ public class Test_Bmob extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_bmob);
-        Bmob.initialize(this, "fbd7c66a38b160c5677a774971be3294");
+       /* Bmob.initialize(this, "fbd7c66a38b160c5677a774971be3294");
         Toast.makeText(this,"测试",Toast.LENGTH_SHORT).show();
         BmobQuery<Clocle_help> query=new BmobQuery<Clocle_help>();
         query.addWhereGreaterThan("peopleNum", 0);
@@ -50,7 +41,7 @@ public class Test_Bmob extends Activity {
           //      help_recycleview.setAdapter(new RecycleViewAdapter(Clocle_help_activity.this,list));
          //       mrefresh.setRefreshing(false);
             }
-        });
+        });*/
  //       ImageFactory factory=new ImageFactory();
 /*String path="/storage/emulated/0/DCIM/Camera/IMG_20151002_080421_mh1466438438485.jpg";
         Bitmap bm=factory.getBitmap(path);

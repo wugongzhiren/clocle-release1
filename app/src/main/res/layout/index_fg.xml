@@ -3,25 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<android.support.v4.widget.SwipeRefreshLayout
-    android:id="@+id/main_swipe"
+    <!--支持上拉加载，下拉刷新的RV-->
+<com.view.nrv.NRecyclerView
+    android:id="@+id/dynamic_rv"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <com.view.EmptyRecleView
-        android:id="@+id/main_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    app:interpolator="@android:anim/overshoot_interpolator"
+    android:scrollbars="vertical">
 
-    </com.view.EmptyRecleView>
-
-</android.support.v4.widget.SwipeRefreshLayout>
-<android.support.design.widget.FloatingActionButton
-    android:id="@+id/dynamic_action_bt"
-android:layout_width="50dp"
-android:layout_height="50dp"
-android:layout_gravity="right|bottom"
-    android:layout_margin="10dp"
-
-app:backgroundTint="#259ef4"/>
+</com.view.nrv.NRecyclerView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/dynamic_action_bt"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="10dp"
+        app:backgroundTint="#259ef4" />
 </FrameLayout>
 

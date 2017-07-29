@@ -1,59 +1,131 @@
 package com.bean;
 
-import com.clocle.huxiang.clocle.Bmob_UserBean;
+import java.util.Date;
 
-import java.util.List;
-
-import cn.bmob.v3.BmobObject;
-
-/**动态类
- * Created by Administrator on 2016/7/16.
+/**
+ * 首页动态
+ * Created by Administrator on 2017/7/11.
  */
-public class Dynamic extends BmobObject{
-    private Bmob_UserBean user;
-    private Integer commentCount;//评论数
-    private Integer views;//浏览数
-    private List<String> imgs;//附带图
+public class Dynamic {
+    private Long id;//动态ID
+    private Long userID;//发表用户ID
+    private String userName;//发表用户名
+    private int sex;//发表用户性别
+    private  String avatarUrl;//用户头像URL
+    private String imgHttpUrlJson;//所有图片外链URLJSON字符串（最多9张）
+    private  String content;//动态内容
+    private int dFlag;//动态类型；1.文字，2.图文，3.广告。4.带视频。。。等
+    private int commentCount;//评论数
+    private int viewCount;//浏览数
 
-    public Bmob_UserBean getUser() {
-        return user;
+    private int totalpages;//由服务器传回内容共多少页
+    private String creatTime;//创建日期
+    private String updateTime;//更新日期
+
+    public Dynamic() {
     }
 
-    public void setUser(Bmob_UserBean user) {
-        this.user = user;
+    public int getTotalpages() {
+        return totalpages;
     }
 
-    public Integer getCommentCount() {
+    public void setTotalpages(int totalpages) {
+        this.totalpages = totalpages;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public int getCommentCount() {
         return commentCount;
     }
 
-    public void setCommentCount(Integer commentCount) {
+    public void setCommentCount(int commentCount) {
         this.commentCount = commentCount;
     }
 
-    public Integer getViews() {
-        return views;
+    public int getViewCount() {
+        return viewCount;
     }
 
-    public void setViews(Integer views) {
-        this.views = views;
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
     }
 
-    public List<String> getImgs() {
-        return imgs;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setImgs(List<String> imgs) {
-        this.imgs = imgs;
+    public Long getUserID() {
+        return userID;
     }
 
-    public String getDynamicContent() {
-        return dynamicContent;
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 
-    public void setDynamicContent(String dynamicContent) {
-        this.dynamicContent = dynamicContent;
+    public String getUserName() {
+        return userName;
     }
 
-    private String dynamicContent;//发表内容
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getImgHttpUrlJson() {
+        return imgHttpUrlJson;
+    }
+
+    public void setImgHttpUrlJson(String imgHttpUrlJson) {
+        this.imgHttpUrlJson = imgHttpUrlJson;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public int getdFlag() {
+        return dFlag;
+    }
+
+    public void setdFlag(int dFlag) {
+        this.dFlag = dFlag;
+    }
+
+    public String getCreatTime() {
+        return creatTime;
+    }
+
+    public void setCreatTime(String creatTime) {
+        this.creatTime = creatTime;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 }

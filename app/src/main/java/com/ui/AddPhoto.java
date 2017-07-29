@@ -17,11 +17,7 @@ import com.clocle.huxiang.clocle.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.UpdateListener;
-import cn.bmob.v3.listener.UploadBatchListener;
+
 
 import tool.ShowToast;
 
@@ -63,7 +59,7 @@ public class AddPhoto extends Base_activity  {
     public void onClick(View v) {
 switch (v.getId()){
     case R.id.dynamic_publish:
-        BmobFile.uploadBatch(uploadurl, new UploadBatchListener() {
+       /* BmobFile.uploadBatch(uploadurl, new UploadBatchListener() {
             @Override
             public void onSuccess(List<BmobFile> list, List<String> list1) {
                 if(list1.size()==uploadurl.length){
@@ -90,7 +86,7 @@ switch (v.getId()){
             public void onError(int i, String s) {
 
             }
-        });
+        });*/
         break;
     default:
         break;

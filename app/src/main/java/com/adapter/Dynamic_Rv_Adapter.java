@@ -43,7 +43,7 @@ public class Dynamic_Rv_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         holder.itemView.setTag(list.get(position));
-       if(holder instanceof DynamicVH){
+    /*   if(holder instanceof DynamicVH){
            ((DynamicVH) holder).nameTV.setText(list.get(position).getUser().getUsername());
            ((DynamicVH) holder).indexImg.setImageURI(list.get(position).getImgs().get(0));
            ((DynamicVH) holder).indexPhoto.setImageURI(list.get(position).getUser().getphotoUrl());
@@ -57,7 +57,7 @@ public class Dynamic_Rv_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                }
            });
            ((DynamicVH) holder).contentTv.setText(list.get(position).getDynamicContent());
-       }
+       }*/
     }
 
     @Override
@@ -73,9 +73,9 @@ public class Dynamic_Rv_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         public DynamicVH(View itemView) {
             super(itemView);
-            indexImg = (SimpleDraweeView) itemView.findViewById(R.id.index_rv_img);
+            //indexImg = (SimpleDraweeView) itemView.findViewById(R.id.index_rv_img);
             contentTv = (TextView) itemView.findViewById(R.id.index_rv_content);
-            indexPhoto = (SimpleDraweeView) itemView.findViewById(R.id.index_rv_photo);
+            //indexPhoto = (SimpleDraweeView) itemView.findViewById(R.id.index_rv_photo);
             nameTV = (TextView) itemView.findViewById(R.id.dynamic_name_tv);
             contentTv.setOnClickListener(this);
             indexPhoto.setOnClickListener(this);
@@ -89,7 +89,7 @@ public class Dynamic_Rv_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 case R.id.index_rv_content:
                     //跳转到详情页
                     Intent intent=new Intent(mcontext, Dynamic_Detail.class);
-                    intent.putExtra("dynamic",(Dynamic)itemView.getTag());
+                    //intent.putExtra("dynamic",(Dynamic)itemView.getTag());
                     mcontext.startActivity(intent);
             }
         }

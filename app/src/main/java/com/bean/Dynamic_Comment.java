@@ -2,14 +2,13 @@ package com.bean;
 
 import com.clocle.huxiang.clocle.Bmob_UserBean;
 
-import cn.bmob.v3.BmobObject;
 
 /**
  * 动态评论bean
  * Created by Administrator on 2016/11/21.
  */
 
-public class Dynamic_Comment extends BmobObject {
+public class Dynamic_Comment  {
     private Bmob_UserBean commentuser;
 
     public String getDynamicID() {

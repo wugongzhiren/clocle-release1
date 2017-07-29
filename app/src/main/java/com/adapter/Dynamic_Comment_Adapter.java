@@ -58,7 +58,7 @@ public class Dynamic_Comment_Adapter extends RecyclerView.Adapter<RecyclerView.V
             });
         }
         if (holder instanceof Dynamic_Comment_VH) {
-            ((Dynamic_Comment_VH) holder).dynamic_comment_nickname.setText(list.get(position).getCommentuser().getUsername());
+            //((Dynamic_Comment_VH) holder).dynamic_comment_nickname.setText(list.get(position).getCommentuser().getUsername());
             ((Dynamic_Comment_VH) holder).dynamic_comment_content.setText(list.get(position).getComment());
             ((Dynamic_Comment_VH) holder).dynamic_comment_item_photo.setImageURI(list.get(position).getCommentuser().getphotoUrl());
 

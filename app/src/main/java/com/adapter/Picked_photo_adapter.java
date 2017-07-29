@@ -27,12 +27,6 @@ import com.view.DynamicHWimageview;
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
-
 
 /**
  * 通用图片选择后展示已选图片的adapter

@@ -23,9 +23,6 @@ import com.clocle.huxiang.clocle.R;
 
 import java.util.List;
 
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by Administrator on 2016/8/10.
@@ -78,7 +75,7 @@ private int flag;
             @Override
             public void onClick(View v) {
                 //更新用户昵称
-                Bmob_UserBean newUser = new Bmob_UserBean();
+              /*  Bmob_UserBean newUser = new Bmob_UserBean();
                 Bmob_UserBean userBean = BmobUser.getCurrentUser(Bmob_UserBean.class);
                 newUser.setUsername(text.getText().toString());
                 newUser.update(userBean.getObjectId(), new UpdateListener() {
@@ -90,7 +87,7 @@ private int flag;
                         }
 
                     }
-                });
+                });*/
             }
         });
     }

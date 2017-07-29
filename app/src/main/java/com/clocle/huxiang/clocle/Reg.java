@@ -14,10 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.SaveListener;
 import okhttp3.OkHttpClient;
 import tool.Bg_blur;
 
@@ -41,21 +37,24 @@ public class Reg extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bmob.initialize(this, "fbd7c66a38b160c5677a774971be3294");
+        //Bmob.initialize(this, "fbd7c66a38b160c5677a774971be3294");
        /* Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.login_bg);
         index_photo=BitmapFactory.decodeResource(getResources(),R.mipmap.reg);
         login_bg_bm=Bg_blur.blur(this,bitmap);*/
         setContentView(R.layout.reg_layout);
+        Intent intent=new Intent(Reg.this,MainActivity.class);
+        startActivity(intent);
+        finish();
        // BmobUser bmobUser = BmobUser.getCurrentUser();
-        Bmob_UserBean bmob_userBean=  BmobUser.getCurrentUser(Bmob_UserBean.class);
-        if(bmob_userBean != null){
+       // Bmob_UserBean bmob_userBean=  BmobUser.getCurrentUser(Bmob_UserBean.class);
+        /*if(bmob_userBean != null){
             // 允许用户使用应用
             Intent intent=new Intent(Reg.this,MainActivity.class);
             startActivity(intent);
             finish();
         }else{
             //缓存用户对象为空时， 可打开用户注册界面…
-        }
+        }*/
         bindView();
          // 不存在设置默认图片
         //imageView.setImageBitmap(login_bg_bm);
@@ -119,7 +118,7 @@ public class Reg extends AppCompatActivity implements View.OnClickListener {
 
                 Bmob_UserBean user = new Bmob_UserBean();
 //注意：不能调用setObjectId("")方法
-                user.setUsername(nametem);
+               /* user.setUsername(nametem);
                 //user.setMobilePhoneNumber(nametem);
                 user.setPassword(pstem);
                 user.setSex("女");
@@ -137,7 +136,7 @@ public class Reg extends AppCompatActivity implements View.OnClickListener {
                             progress.setVisibility(View.GONE);
                         }
                     }
-                });
+                });*/
               /*  user.save(new SaveListener<String>() {
 
                     @Override
@@ -162,7 +161,7 @@ public class Reg extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(this, "请输入密码！", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Bmob_UserBean bu2 = new Bmob_UserBean();
+               /* Bmob_UserBean bu2 = new Bmob_UserBean();
                 bu2.setUsername(nametem1);
                 bu2.setPassword(pstem1);
                 bu2.login(new SaveListener<Bmob_UserBean>() {
@@ -181,7 +180,7 @@ public class Reg extends AppCompatActivity implements View.OnClickListener {
                             Toast.makeText(Reg.this,"登录失败",Toast.LENGTH_SHORT).show();
                         }
                     }
-                });
+                });*/
                /* BmobQuery<BmobUser> query=new BmobQuery<BmobUser>();
                 query.getObject("b08f6bca4e", new QueryListener<BmobUser>() {
                     @Override

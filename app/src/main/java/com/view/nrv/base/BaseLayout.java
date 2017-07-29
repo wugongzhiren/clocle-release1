@@ -72,7 +72,9 @@ import tool.Logger;
  */
 public abstract class BaseLayout extends LinearLayout
         implements NestedScrollingParent{
-
+    /**
+     * 判定为拖动的最小移动像素数
+     */
     private int mTouchSlop;
     protected boolean mIsBeingDragged = false;
     private float mLastMotionY;
@@ -196,23 +198,28 @@ public abstract class BaseLayout extends LinearLayout
         mNestedScrollingParentHelper = new NestedScrollingParentHelper(this);
         setOrientation(VERTICAL);
         ViewConfiguration config = ViewConfiguration.get(context);
+        //表示滑动的时候,手的移动要大于这个距离才开始移动控件
         mTouchSlop = config.getScaledTouchSlop();
 
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.NRecyclerView);
         duration = array.getInteger(R.styleable.NRecyclerView_duration,200);
 
         setBackgroundColor(array.getColor(R.styleable.NRecyclerView_layout_color,backgroundColor));
+        //是否能够下拉刷新
         isPullRefreshEnable = array.getBoolean(R.styleable.NRecyclerView_pull_eable,true);
+        //是否能够上拉加载
         isPullLoadEnable = array.getBoolean(R.styleable.NRecyclerView_push_able,true);
+        //超过距离的阻尼系数
         overResistance = array.getFloat(R.styleable.NRecyclerView_over_resistance,0.4f);
         resistance = array.getFloat(R.styleable.NRecyclerView_push_resistance,0.6f);
         overScroll = array.getBoolean(R.styleable.NRecyclerView_over_scroll,true);
         innerView = array.getString(R.styleable.NRecyclerView_inner_view);
+        //加载时能否滑动
         LoadDataScrollEnable = array.getBoolean(R.styleable.NRecyclerView_loaddata_scrolleable,true);
         int interpolatorId = array.getResourceId(R.styleable.NRecyclerView_interpolator, android.R.anim.accelerate_decelerate_interpolator);
 
+        //动画变化率，修饰动画
         Interpolator interpolator = null;
-
         switch (interpolatorId){
             case android.R.anim.accelerate_decelerate_interpolator:
                 interpolator = new AccelerateDecelerateInterpolator();
@@ -272,11 +279,13 @@ public abstract class BaseLayout extends LinearLayout
         final  int action = ev.getAction();
 
         if(action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_UP){
+//没有滚动了
             mIsBeingDragged = false;
             return false;
         }
 
         if (action != MotionEvent.ACTION_DOWN && mIsBeingDragged) {
+            //父控件拦截事件，事件不会再向下传递
             return true;
         }
 
@@ -300,6 +309,7 @@ public abstract class BaseLayout extends LinearLayout
                 if(!overScroll)
                     return super.onInterceptTouchEvent(ev);
 
+                //获取相对于控件的Y坐标
                 final float y = ev.getY(), x = ev.getX();
                 final float diff, absDiff;
                 diff = y - mLastMotionY;
@@ -571,8 +581,6 @@ public abstract class BaseLayout extends LinearLayout
                     isLoadingMore = true;
                     IsLastItem = true;
                     currentPages++;
-//                    if(currentPages  == totalPages)
-//                        setPullLoadEnable(false);
                     if(l != null) l.load();
                 }
             }
@@ -658,6 +666,7 @@ public abstract class BaseLayout extends LinearLayout
     public void pullEventWhileLoadData(int dy){
         if(dy < 0){
             scrollTo(0,-refreshView.getHeight());
+            //scrollTo(0, (int) getResources().getDimension(R.dimen.test));
         }else{
             scrollTo(0,loaderView.getHeight());
         }

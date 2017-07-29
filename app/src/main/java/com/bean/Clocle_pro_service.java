@@ -2,13 +2,12 @@ package com.bean;
 
 import com.clocle.huxiang.clocle.Bmob_UserBean;
 
-import cn.bmob.v3.BmobObject;
 
 /**
  * Created by Administrator on 2017/1/11.
  */
 
-public class Clocle_pro_service extends BmobObject{
+public class Clocle_pro_service {
     private String imgUrl;
     private Bmob_UserBean bean;
     private String tag;

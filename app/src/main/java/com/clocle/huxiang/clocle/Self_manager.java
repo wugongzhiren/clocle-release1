@@ -23,12 +23,6 @@ import com.ui.UpdateSelfInfo;
 
 import java.io.File;
 
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.UpdateListener;
-import cn.bmob.v3.listener.UploadFileListener;
 import okhttp3.Call;
 import tool.Utils;
 
@@ -51,7 +45,7 @@ public class Self_manager extends Base_activity {
         //hideStatus();
         setContentView(R.layout.self_manager);
         initViews();
-        photo.setImageURI(Bmob_UserBean.getCurrentUser(Bmob_UserBean.class).getphotoUrl());
+        //photo.setImageURI(Bmob_UserBean.getCurrentUser(Bmob_UserBean.class).getphotoUrl());
         photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

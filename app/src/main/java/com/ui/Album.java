@@ -21,7 +21,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.BmobUser;
 
 
 
@@ -41,13 +40,13 @@ public class Album extends Base_activity {
         super.onCreate(savedInstanceState);
         hideStatus();
         setContentView(R.layout.album_layout);
-        Bmob_UserBean bean= BmobUser.getCurrentUser(Bmob_UserBean.class);
+
         button= (Button) findViewById(R.id.dynamic_publish);
 
         albumRv= (RecyclerView) findViewById(R.id.album_rv);
         albumRv.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
        // albumRv.setAdapter(new Album_Rv_ItemAdapter(null ,this));
-        albumRv.setAdapter(new Album_Rv_ItemAdapter(bean.getAlbumUrl(),this));
+       // albumRv.setAdapter(new Album_Rv_ItemAdapter(bean.getAlbumUrl(),this));
         //打开图片选择器
         button.setOnClickListener(new View.OnClickListener() {
             @Override

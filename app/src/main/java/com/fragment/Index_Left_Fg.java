@@ -28,7 +28,6 @@ import com.ui.Album;
 
 import java.util.ArrayList;
 
-import cn.bmob.v3.BmobUser;
 
 /**
  * 侧边栏
@@ -63,14 +62,14 @@ public class Index_Left_Fg extends Fragment implements AdapterView.OnItemClickLi
         out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BmobUser.logOut();   //清除缓存用户对象
+                //BmobUser.logOut();   //清除缓存用户对象
                 Intent intent =new Intent(getActivity(), Reg.class);
                 startActivity(intent);
             }
         });
         signature = (TextView) view.findViewById(R.id.signature);//签名
-        Bmob_UserBean currentuser = BmobUser.getCurrentUser(Bmob_UserBean.class);
-        if(currentuser!=null){
+       // Bmob_UserBean currentuser = BmobUser.getCurrentUser(Bmob_UserBean.class);
+       /* if(currentuser!=null){
             if (currentuser.getSignature() == null) {
                      signature.setText("美美的人都有签名奥！");
                   } else {
@@ -80,7 +79,7 @@ public class Index_Left_Fg extends Fragment implements AdapterView.OnItemClickLi
             nickname.setText(currentuser.getUsername());
             index_photo = (SimpleDraweeView) view.findViewById(R.id.index_photo);
             index_photo.setImageURI(currentuser.getphotoUrl());
-        }
+        }*/
        /* //
 Bmob_UserBean currentuser = BmobUser.getCurrentUser(Bmob_UserBean.class);
         signature = (TextView) view.findViewById(R.id.signature);//签名
@@ -150,7 +149,7 @@ Bmob_UserBean currentuser = BmobUser.getCurrentUser(Bmob_UserBean.class);
         listview.setAdapter(new Index_list_Adapter());
         listview.setOnItemClickListener(this);
         //index_photo.setImageURI(BmobUser.getCurrentUser(Bmob_UserBean.class).getphotoUrl());
-        index_photo.setOnClickListener(this);
+        //index_photo.setOnClickListener(this);
     }
 
     @Override

@@ -80,10 +80,10 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
 
         final String pic=datas.get(position).getBmob_userBean().getphotoUrl();
-        holder.itemView.setTag(datas.get(position).getObjectId());
+        //holder.itemView.setTag(datas.get(position).getObjectId());
         if (holder instanceof MyViewHolder) {
             ((MyViewHolder) holder).photo.setImageURI(pic);
-            ((MyViewHolder) holder).name.setText(datas.get(position).getBmob_userBean().getUsername());
+            //((MyViewHolder) holder).name.setText(datas.get(position).getBmob_userBean().getUsername());
             ((MyViewHolder) holder).contexttext.setText(datas.get(position).getContent());
             //设置imgsRV的高度
             if(datas.get(position).getImgs()!=null) {

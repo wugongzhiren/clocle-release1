@@ -4,8 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/toolar" />
-
+<Button
+    android:id="@+id/dynamic_publish"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="发表"/>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

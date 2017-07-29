@@ -32,12 +32,12 @@
         "source": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_default_portrait.png"
     },
     {
-        "merged": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u2600.png",
-        "source": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u2600.png"
-    },
-    {
         "merged": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_file_icon_file.png",
         "source": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_file_icon_file.png"
+    },
+    {
+        "merged": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u2600.png",
+        "source": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u2600.png"
     },
     {
         "merged": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f366.png",
@@ -784,12 +784,12 @@
         "source": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_picture_normal.png"
     },
     {
-        "merged": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_receive_voice_one.png",
-        "source": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_receive_voice_one.png"
-    },
-    {
         "merged": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_emoji_block.png",
         "source": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_emoji_block.png"
+    },
+    {
+        "merged": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_receive_voice_one.png",
+        "source": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_receive_voice_one.png"
     },
     {
         "merged": "E:\\clocle_master\\clocle-master\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_bubble_left.9.png",

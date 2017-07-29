@@ -67,7 +67,7 @@ public class PullAndPush extends AppCompatActivity implements
         ViewGroup bottomView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.bottom_layout,(ViewGroup)findViewById(android.R.id.content),false);
         recyclerMagicView.setBottomView(bottomView);
 
-        datas = Arrays.asList(getResources().getStringArray(R.array.data));
+        //datas = Arrays.asList(getResources().getStringArray(R.array.data));
 
         addItems();
         adapter = new MyAdapter(currentDatas);

@@ -5,10 +5,8 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
@@ -22,32 +20,30 @@ import android.widget.Toast;
 import com.Base_activity;
 import com.adapter.Picked_photo_adapter;
 import com.application.App;
-import com.bean.Dynamic;
 import com.bean.ImageInfo;
-import com.clocle.huxiang.clocle.Bmob_UserBean;
 import com.clocle.huxiang.clocle.R;
 import com.common_tool.ImageFactory;
 import com.constant.Constant;
 import com.http.repository.DynamicManage;
 import com.imageselector.MultiImageSelectorActivity;
-import com.imageselector.view.StartImage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import aliyun.AliOss;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.SaveListener;
-import cn.bmob.v3.listener.UploadBatchListener;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 import tool.GetuserInfo;
 import tool.ShowToast;
 
@@ -61,11 +57,14 @@ public class Dynamic_publish extends Base_activity {
     private GridView gridView;
     private EditText dynamic_ed;
     private List<String> mPhotoList;//已经选择图片
+    private List<String> httpImgUrl = new ArrayList<>();//图片外链路径
     private List<ImageInfo> radioPhoto = new ArrayList<>();//压缩后图片的信息
     private Picked_photo_adapter picked_photo_adapter;
     private Button button;
-private Retrofit retrofit;
+    private Retrofit retrofit;
     private DynamicManage dynamicManage;
+    private CompositeDisposable s = new CompositeDisposable();//Rxjava的Disposable
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,62 +83,66 @@ private Retrofit retrofit;
                     return;
                 } else {
                     //异步文件上传
-                    Observable.create(new Observable.OnSubscribe<ImageInfo>() {
+                    Observable.create(new ObservableOnSubscribe<ImageInfo>() {
                         @Override
-                        public void call(Subscriber<? super ImageInfo> subscriber) {
+                        public void subscribe(ObservableEmitter<ImageInfo> e) throws Exception {
                             for (int i = 0; i < radioPhoto.size(); i++) {
-                                subscriber.onNext(radioPhoto.get(i));
+                                e.onNext(radioPhoto.get(i));
                             }
-                            subscriber.onCompleted();
+                            //事件完成
+                            e.onComplete();
                         }
-                    }).subscribeOn(Schedulers.newThread())
-                            //指定为IO线程
-                            .observeOn(Schedulers.io())
-                            .map(new Func1<ImageInfo, String>() {
+                    }).map(new Function<ImageInfo, String>() {
+                        @Override
+                        public String apply(ImageInfo imageInfo) throws Exception {
+                            //图片上传，并且返回上传结果
+                            return AliOss.getAliOss().UploadToOssSync(imageInfo.name + ".png", imageInfo.url);
+                        }
+                    }).subscribeOn(Schedulers.io())//在IO线程发事件
+                            .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<String>()
+                    {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                            //d.add();
+                            s.add(d);
+                        }
+                        @Override
+                        public void onNext(String value) {
+                            if (Constant.FAIL.equals(value)) {
+                                ShowToast.showToast(mcontext, "图片上传失败");
+                                //取消订阅
+                                s.clear();
+                            } else {
+                                httpImgUrl.add(value);
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            s.clear();
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            retrofit = App.getRetrofit();
+                            dynamicManage = retrofit.create(DynamicManage.class);
+                            Call call = dynamicManage.publish(new GetuserInfo(mcontext).getUserinfo(), dynamic_ed.getText().toString(), httpImgUrl);
+                            call.enqueue(new Callback() {
                                 @Override
-                                public String call(ImageInfo s) {
-                                    //图片上传，并且返回上传结果
-                                    return AliOss.getAliOss().UploadToOssSync(s.name+".png",s.url);
+                                public void onResponse(Call call, Response response) {
+                                    if (response.body().equals(Constant.SUCCESS)) {
+                                        ShowToast.showToast(mcontext, "发布成功");
+                                    }
                                 }
-                            }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
-                        @Override
-                        public void onCompleted() {
 
-                            ShowToast.showToast(mcontext,"图片上传成功");
-                        }
-
-                        @Override
-                        public void onError(Throwable throwable) {
-
-                        }
-
-                        @Override
-                        public void onNext(String s) {
-                            if (Constant.FAIL.equals(s)) {
-                                //ShowToast.showToast(mcontext,"图片上传失败");
-                                if (!this.isUnsubscribed()) {
-                                    ShowToast.showToast(mcontext,"图片上传失败");
-                                    this.unsubscribe();
+                                @Override
+                                public void onFailure(Call call, Throwable t) {
+                                    ShowToast.showToast(mcontext, "服务器开小差啦");
                                 }
-                            }
-
+                            });
                         }
                     });
-/*                    AliOss.getAliOss().startUploadTasks(radioPhoto, new AliOss.UploadListener() {
-                        @Override
-                        public void success(List<ImageInfo> results) {
-ShowToast.showToast(mcontext,"全部上传完成");
-                        }
-
-                        @Override
-                        public void fail() {
-
-                        }
-                    });*/
-//上传到服务器，加密传输
-                    retrofit= App.getRetrofit();
-                    dynamicManage=retrofit.create(DynamicManage.class);
-                    //Call<String> call = dynamicManage.publish(new GetuserInfo(mcontext).getUserinfo(),dynamic_ed.getText().toString(),);
+                    //回到主线程处理结果
                 }
             }
         });
@@ -205,34 +208,26 @@ ShowToast.showToast(mcontext,"全部上传完成");
             if (resultCode == Activity.RESULT_OK) {
                 mPhotoList = data.getStringArrayListExtra("select_result");
                 // ShowToast.showToast(mcontext,mPhotoList.toString());
-                Observable.create(new Observable.OnSubscribe<String>() {
+                Observable.create(new ObservableOnSubscribe<String>() {
                     @Override
-                    public void call(Subscriber<? super String> subscriber) {
+                    public void subscribe(ObservableEmitter<String> e) throws Exception {
                         for (int i = 0; i < mPhotoList.size(); i++) {
-                            subscriber.onNext(mPhotoList.get(i));
+                            e.onNext(mPhotoList.get(i));
                         }
-                        subscriber.onCompleted();
+                        e.onComplete();
                     }
-                }).subscribeOn(Schedulers.newThread())
+                })
                         //指定为IO线程
-                        .observeOn(Schedulers.io())
-                        .map(new Func1<String, ImageInfo>() {
+                        .subscribeOn(Schedulers.io())
+                        .map(new Function<String, ImageInfo>() {
                             @Override
-                            public ImageInfo call(String s) {
-                                //图片压缩，并且返回压缩完成后临时图片路径
+                            public ImageInfo apply(String s) throws Exception {
                                 return ImageFactory.ratio(s, 480, 800);
                             }
-                        }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<ImageInfo>() {
+                        }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<ImageInfo>() {
                     @Override
-                    public void onCompleted() {
-                        picked_photo_adapter = new Picked_photo_adapter(mcontext, radioPhoto);
-                        //picked_photo_adapter.notifyDataSetChanged();
-                        gridView.setAdapter(picked_photo_adapter);
-                    }
-
-                    @Override
-                    public void onError(Throwable throwable) {
-                        ShowToast.showToast(mcontext, "图片解析错误");
+                    public void onSubscribe(Disposable d) {
+                        s.add(d);
                     }
 
                     @Override
@@ -241,6 +236,19 @@ ShowToast.showToast(mcontext,"全部上传完成");
                             radioPhoto.add(s);
 
                         }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        ShowToast.showToast(mcontext, "图片解析错误");
+                        s.clear();
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        picked_photo_adapter = new Picked_photo_adapter(mcontext, radioPhoto);
+                        //picked_photo_adapter.notifyDataSetChanged();
+                        gridView.setAdapter(picked_photo_adapter);
                     }
                 });
             }

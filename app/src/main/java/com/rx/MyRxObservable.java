@@ -1,3 +1,4 @@
+/*
 package com.rx;
 
 import android.animation.Animator;
@@ -5,9 +6,11 @@ import android.animation.Animator;
 import rx.Observable;
 import tool.Utils;
 
+*/
 /**
  * Created by Administrator on 2016/11/3.
- */
+ *//*
+
 
 public class MyRxObservable {
     public static Observable<Void> add(Animator animator){
@@ -16,3 +19,4 @@ public class MyRxObservable {
         return Observable.create(new AnimatorOnSubscribe(animator));
     }
 }
+*/

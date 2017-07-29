@@ -25,10 +25,6 @@ import com.function.FleaMarket_details;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 
 /**
  * Created by Administrator on 2016/10/11.
@@ -48,7 +44,7 @@ private List<Flea_market> flea_marketList;//从服务器获取的二手信息
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i("tag","onCreateView"+"创建");
-        Bmob.initialize(getActivity(), "fbd7c66a38b160c5677a774971be3294");
+        //Bmob.initialize(getActivity(), "fbd7c66a38b160c5677a774971be3294");
         mRecyclerView = (RecyclerView) inflater.inflate(R.layout.flea_viewpager1, container,false);
         flea_marketList=new ArrayList<>();
         //测试用模拟数据开始
@@ -110,7 +106,7 @@ private List<Flea_market> flea_marketList;//从服务器获取的二手信息
     }
     public void initData(){
         //开发阶段返回所有数据
-        BmobQuery<Flea_market> query=new BmobQuery<>();
+       /* BmobQuery<Flea_market> query=new BmobQuery<>();
         query.include("flea_user");
         query.findObjects(new FindListener<Flea_market>() {
             @Override
@@ -123,7 +119,7 @@ private List<Flea_market> flea_marketList;//从服务器获取的二手信息
                    // refreshLayout.setRefreshing(false);
                 }
             }
-        });
+        });*/
 
     }
 
@@ -153,7 +149,7 @@ private List<Flea_market> flea_marketList;//从服务器获取的二手信息
 
         @Override
         public void onBindViewHolder(final RecyclerViewAdapter.ViewHolder holder,final int position) {
-            Log.i("tag","onBindViewHolder"+"马上要显示图片");
+           /* Log.i("tag","onBindViewHolder"+"马上要显示图片");
             //以唯一的obejectId来标识item
             holder.itemView.setTag(flea_marketList.get(position).getObjectId());
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -173,12 +169,12 @@ private List<Flea_market> flea_marketList;//从服务器获取的二手信息
                     intent.putExtra("views",flea_marketList.get(position).getViews());
                     startActivity(intent);
                 }
-            });
+            });*/
             holder.img_flea_rv.setLayoutManager(new StaggeredGridLayoutManager(1,
                     StaggeredGridLayoutManager.HORIZONTAL));
             holder.img_flea_rv.setAdapter(new Rv_single_imgs_adapter(flea_marketList.get(position).getFlea_imgs(),getActivity()));
             holder.userPhoto.setImageURI(flea_marketList.get(position).getFlea_user().getphotoUrl());
-            holder.flea_nickname.setText(flea_marketList.get(position).getFlea_user().getUsername());
+           // holder.flea_nickname.setText(flea_marketList.get(position).getFlea_user().getUsername());
         }
 
         @Override

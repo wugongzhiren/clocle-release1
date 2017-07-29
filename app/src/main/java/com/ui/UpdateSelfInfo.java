@@ -27,11 +27,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.io.File;
 
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.UpdateListener;
-import cn.bmob.v3.listener.UploadFileListener;
 import tool.Popwindow;
 import tool.ShowToast;
 
@@ -57,7 +52,7 @@ setContentView(R.layout.updateselfinfo);
         nickname= (LinearLayout) findViewById(R.id.nicknameLine);
 
         signature= (LinearLayout) findViewById(R.id.signatureLine);
-        photo.setImageURI(Bmob_UserBean.getCurrentUser(Bmob_UserBean.class).getphotoUrl());
+        //photo.setImageURI(Bmob_UserBean.getCurrentUser(Bmob_UserBean.class).getphotoUrl());
         photo.setOnClickListener(this);
         nickname.setOnClickListener(this);
         signature.setOnClickListener(this);
@@ -195,7 +190,7 @@ setContentView(R.layout.updateselfinfo);
             photo.setImageURI("file://"+Uri.parse(imagePath));
             //头像上传更新
             File file = new File(imagePath);
-
+/*
             final BmobFile bmobFile = new BmobFile(file);
             bmobFile.uploadblock(new UploadFileListener() {
 
@@ -226,7 +221,7 @@ setContentView(R.layout.updateselfinfo);
                 public void onProgress(Integer value) {
                     // 返回的上传进度（百分比）
                 }
-            });
+            });*/
 
 
 
