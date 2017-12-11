@@ -148,4 +148,19 @@ public class Utils {
 					"Must be called from the main thread. Was: " + Thread.currentThread());
 		}
 	}
+
+	/**
+	 * 返回数组的元素个数
+	 * @param a 数组
+	 * @return
+	 */
+	public static int getArraySize(String[] a){
+		int count=0;
+		for(int i=0;i<a.length;i++){
+			if(a[i]!=null){
+				count++;
+			}
+		}
+		return count;
+	}
 }

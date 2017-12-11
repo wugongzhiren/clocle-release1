@@ -32,11 +32,7 @@
 
         </activity>
         <activity android:name=".Reg">
-            <intent-filter>
-           <action android:name="android.intent.action.MAIN" />
 
-           <category android:name="android.intent.category.LAUNCHER" />
-           </intent-filter>
 
         </activity>
         <activity
@@ -107,7 +103,11 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name="test.Test1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             <!-- <intent-filter>
              <action android:name="android.intent.action.MAIN" />
 
@@ -152,7 +152,6 @@
 
         </activity>
 
-        <activity android:name="com.Base_activity" />
         <activity android:name="com.function.FleaMarket">
 
         </activity>
@@ -203,9 +202,6 @@
         <activity android:name="com.imageselector.MultiImageSelectorActivity">
 
         </activity>
-        <activity android:name="test.PullAndPush">
-
-        </activity>
     </application>
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -222,7 +218,6 @@
     <uses-permission android:name="android.permission.REAL_GET_TASKS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />

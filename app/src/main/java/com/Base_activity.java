@@ -1,5 +1,6 @@
 package com;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
@@ -10,11 +11,15 @@ import android.view.WindowManager;
 
 import com.application.App;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/10/11.
  */
 public class Base_activity extends AppCompatActivity implements View.OnClickListener {
     public Context mcontext= App.getContext();
+    private List<Activity> activities=new ArrayList<>();
     /**
      * 初始化状态栏相关，
      * PS: 设置全屏需要在调用super.onCreate(arg0);之前设置setIsFullScreen(true);否则在Android 6.0下非全屏的activity会出错;
@@ -63,5 +68,16 @@ public class Base_activity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
 
+    }
+
+    /**
+     * 统一结束activity
+     */
+    public void finishAllActivity(){
+        for(int i=0;i<activities.size();i++){
+            if(!activities.get(i).isFinishing()){
+                activities.get(i).finish();
+            }
+        }
     }
 }

@@ -42,9 +42,9 @@ public class Reg extends AppCompatActivity implements View.OnClickListener {
         index_photo=BitmapFactory.decodeResource(getResources(),R.mipmap.reg);
         login_bg_bm=Bg_blur.blur(this,bitmap);*/
         setContentView(R.layout.reg_layout);
-        Intent intent=new Intent(Reg.this,MainActivity.class);
+        /*Intent intent=new Intent(Reg.this,MainActivity.class);
         startActivity(intent);
-        finish();
+        finish();*/
        // BmobUser bmobUser = BmobUser.getCurrentUser();
        // Bmob_UserBean bmob_userBean=  BmobUser.getCurrentUser(Bmob_UserBean.class);
         /*if(bmob_userBean != null){

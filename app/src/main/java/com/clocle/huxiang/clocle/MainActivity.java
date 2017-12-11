@@ -28,7 +28,7 @@ public class MainActivity extends Base_activity {
     private TextView tabfriend;
     private TextView tabfankui;
     private FragmentManager manager;
-    public Index_fg fg1;
+   // public Index_fg fg1;
     private Faxian_fg fg2;
     private Friend_fg fg3;
     private My_fg fg4;
@@ -59,7 +59,7 @@ private ViewPager mainVp;
         titles.add("消息");
         titles.add("发现");
         titles.add("我的");
-        fragments.add(new Index_fg());
+        //fragments.add(new Index_fg());
         fragments.add(new Friend_fg());
         fragments.add(new Faxian_fg());
         fragments.add(new My_fg());

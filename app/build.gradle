@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '26.0.2'
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.clocle.huxiang.clocle"
@@ -12,7 +12,7 @@ android {
         versionName "2.0"
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true
-      /*  multiDexEnabled true*/
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -29,6 +29,7 @@ repositories{
     flatDir{
         dirs 'libs'
     }
+    google()
 }
 dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
@@ -57,8 +58,12 @@ dependencies {
     compile 'com.yqritc:recyclerview-flexibledivider:1.4.0'
     //图片选择器
     //compile 'cn.finalteam:galleryfinal:1.4.8.7'
-    compile project(':IMKit')
     compile 'org.greenrobot:eventbus:3.0.0'
+    //下拉刷新上拉加载，支持所有的 View
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3-alpha-3'
+    //解决64K方法数限制
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.1'
     compile files('libs/aliyun-oss-sdk-android-2.3.0.jar')
     /*compile 'com.jakewharton:butterknife:8.6.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'*/

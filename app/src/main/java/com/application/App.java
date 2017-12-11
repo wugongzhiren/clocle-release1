@@ -4,12 +4,16 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.multidex.MultiDex;
+import android.view.LayoutInflater;
+import android.view.View;
 
 
 /*import com.alibaba.mobileim.YWAPI;
 import com.alibaba.mobileim.YWIMKit;
 import com.alibaba.wxlib.util.SysUtil;*/
 import com.clocle.huxiang.clocle.Bmob_UserBean;
+import com.clocle.huxiang.clocle.R;
 import com.constant.Constant;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
@@ -18,10 +22,6 @@ import com.http.ToStringConverterFactory;
 
 
 
-
-
-
-import io.rong.imkit.RongIM;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -33,13 +33,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class App extends Application {
     private OkHttpClient okHttpClient;
     private static Context context;
-    private static Bmob_UserBean bean;
+private static View emptyView;
 private static Gson gson;
 String testtoken="0GxyEvHDQqKuu9T+21VAScouCHXzYZWucMXTL4Cxm0sdLCBYt4wPAcjEhK+6xfzKUJ55QYfUThDvGO6JlAERqQkK28hF1GpB";
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
-        RongIM.init(this);
+        this.emptyView= LayoutInflater.from(this).inflate(R.layout.empty_view,null,false);
         //阿里OSS初始化
         //AliOss.init(context);
         //Configuration config = new Configuration.Builder().build();
@@ -88,8 +95,8 @@ String testtoken="0GxyEvHDQqKuu9T+21VAScouCHXzYZWucMXTL4Cxm0sdLCBYt4wPAcjEhK+6xf
         return context;
     }
 
-    public static Bmob_UserBean getuser() {
-        return bean;
+    public static View getEmptyView(){
+        return emptyView;
     }
 
     public static String getCurProcessName(Context context) {

@@ -2,41 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
-<RelativeLayout
-    android:background="#8676e2"
-    android:layout_width="match_parent"
-    android:layout_height="30dp">
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/dynamic_comment_item_photo"
-        android:layout_width="30dp"
-        android:layout_height="30dp" />
-    <TextView
-        android:id="@+id/dynamic_comment_nickname"
-        android:layout_toRightOf="@+id/dynamic_comment_item_photo"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="nickname"/>
-    <TextView
-        android:layout_toLeftOf="@+id/dynamic_comment_re"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="zan"/>
-    <TextView
-        android:id="@+id/dynamic_comment_re"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="回复"/>
-</RelativeLayout>
-    <TextView
-        android:id="@+id/dynamic_comment_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="这里是评论内容"/>
-    <TextView
-        android:id="@+id/dyanmic_comment_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="2小时前"/>
+<include layout="@layout/index_rv_item"/>
+
+    <include
+        layout="@layout/divide_dynamic_comment"/>
+
 
 </LinearLayout>

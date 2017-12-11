@@ -4,94 +4,25 @@
     xmlns:fresco="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <!--标题栏-->
+<android.support.v7.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/toolbar">
 
+</android.support.v7.widget.Toolbar>
 
-    <android.support.design.widget.CoordinatorLayout
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.view.EmptyRecleView
+        android:id="@+id/detail_info_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    <com.facebook.drawee.view.SimpleDraweeView
-                        android:id="@+id/index_rv_photo_detail"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        fresco:roundAsCircle="true" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/index_rv_photo"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/dynamic_name_tv_detail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:lines="1"
-                            android:text="糖糖没有果" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:orientation="vertical">
-
-
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/detail_content_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll"
-                android:background="#eee" />
-
-            <android.support.v7.widget.RecyclerView
-                app:layout_scrollFlags="scroll"
-                android:id="@+id/detail_imgs_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </android.support.v7.widget.RecyclerView>
-
-            <TextView
-                app:layout_scrollFlags="scroll"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#29e5fd"
-                android:text="评论、todo" />
-
-        </android.support.design.widget.AppBarLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/dynamic_detail_comment_rv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        </android.support.v7.widget.RecyclerView>
-    </android.support.design.widget.CoordinatorLayout>
-
+        />
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
 <!--发表评论-->
     <RelativeLayout
+        android:elevation="12dp"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="50dp">
@@ -100,6 +31,13 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="期待你的神评"/>
+        <Button
+            android:id="@+id/dynamic_comment_publish_ig"
+            android:layout_toLeftOf="@+id/dynamic_comment_publish_bt"
+            android:layout_width="wrap_content"
+            android:clickable="false"
+            android:layout_height="wrap_content"
+            android:text="添加图片"/>
         <Button
             android:id="@+id/dynamic_comment_publish_bt"
             android:layout_alignParentRight="true"

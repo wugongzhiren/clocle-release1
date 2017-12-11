@@ -1,3 +1,4 @@
+/*
 package com.clocle.huxiang.clocle;
 
 
@@ -26,8 +27,6 @@ import com.google.gson.internal.Streams;
 import com.google.gson.reflect.TypeToken;
 import com.http.repository.DynamicManage;
 import com.view.ninegrid.NineGridTestLayout;
-import com.view.nrv.NRecyclerView;
-import com.view.nrv.base.BaseLayout;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,14 +36,18 @@ import tool.ShowToast;
 import java.util.ArrayList;
 import java.util.List;
 
+*/
 /**
  * 首页
  * Created by Administrator on 2016/7/6.
- */
+ *//*
+
 public class Index_fg extends LazyFrament implements
         BaseLayout.RefreshAndLoadingListener {
+*/
 /*public class Index_fg extends Activity implements
-        BaseLayout.RefreshAndLoadingListener {*/
+        BaseLayout.RefreshAndLoadingListener {*//*
+
     // 标志位，标志已经初始化完成。
     private boolean isPrepared;
     DynamicManage service = App.getRetrofit().create(DynamicManage.class);
@@ -72,9 +75,13 @@ public class Index_fg extends LazyFrament implements
                 //startActivity(intent);
             }
         });
-        /*linearLayout= (LinearLayout) view.findViewById(R.id.dynamic_content);
-        linearLayout.setOnClickListener(this);*/
-        /*recyclerView= (EmptyRecleView) view.findViewById(R.id.main_rv);*/
+        */
+/*linearLayout= (LinearLayout) view.findViewById(R.id.dynamic_content);
+        linearLayout.setOnClickListener(this);*//*
+
+        */
+/*recyclerView= (EmptyRecleView) view.findViewById(R.id.main_rv);*//*
+
         //StaggeredGridLayoutManager mLayoutManager = new StaggeredGridLayoutManager( 2 , StaggeredGridLayoutManager.VERTICAL ); //两列，纵向排列
 
 
@@ -143,9 +150,11 @@ public class Index_fg extends LazyFrament implements
 
     // @Override
     protected void lazyLoad() {
-       /* if (!isPrepared || !isVisible) {
+       */
+/* if (!isPrepared || !isVisible) {
             return;
-        }*/
+        }*//*
+
         //填充各控件的数据,加载第一页
         initData(1);
     }
@@ -171,11 +180,13 @@ public class Index_fg extends LazyFrament implements
     }
 
 
-    /**
+    */
+/**
      * 获取到的信息添加到List中
      *
      * @param PageItems 每次下拉刷新或者加载更多时从服务器获取到的List
-     */
+     *//*
+
     private void addItems(List<Dynamic> PageItems) {
 
 
@@ -207,15 +218,18 @@ public class Index_fg extends LazyFrament implements
         public void onBindViewHolder(NrvViewHoader holder, int position) {
             Dynamic dynamic = data.get(position);
             //将图片URL转为List
+*/
 /*            List<String> imgsList=new ArrayList<>();
            ;
             List<String> imgsList = App.getGson().fromJson(dynamic.getImgHttpUrlJson(),
                     new TypeToken<List<String>>() {
-                    }.getType());*/
+                    }.getType());*//*
+
 
 
             holder.nameTV.setText(dynamic.getUserName());
-            holder.imgsLayout.setUrlList( dynamic.getImgHttpUrlJson().split(";"));
+            holder.imgsLayout.setUrlList( dynamic.getImgHttpUrlJson()==null?null:dynamic.getImgHttpUrlJson().split(";"));
+            holder.contentTv.setText(dynamic.getContent());
         }
 
         //addItem后调用
@@ -257,11 +271,13 @@ public class Index_fg extends LazyFrament implements
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-                   /* case R.id.index_rv_content:
+                   */
+/* case R.id.index_rv_content:
                         //跳转到详情页
                         Intent intent=new Intent(getActivity(), Dynamic_Detail.class);
                         intent.putExtra("dynamic",(Dynamic)itemView.getTag());
-                        mcontext.startActivity(intent);*/
+                        mcontext.startActivity(intent);*//*
+
                 }
             }
         }
@@ -277,3 +293,4 @@ public class Index_fg extends LazyFrament implements
 
 
 
+*/

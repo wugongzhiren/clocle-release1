@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import com.clocle.huxiang.clocle.R;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
+
+import tool.Utils;
 
 /**
  * 描述:根据动态图片数显示合适的布局
@@ -100,7 +103,7 @@ public abstract class NineGridLayout extends ViewGroup {
         setVisibility(VISIBLE);
 
         mUrlList=new String[9];
-        for(int i=0;i<urlList.length-1;i++){
+        for(int i=0;i<urlList.length;i++){
             mUrlList[i]=urlList[i];
         }
 
@@ -126,6 +129,7 @@ public abstract class NineGridLayout extends ViewGroup {
         } else {
             setVisibility(GONE);
         }
+        Log.d("tag",size+"");
 
         if (size == 1) {
             String url = mUrlList[0];
@@ -253,6 +257,7 @@ public abstract class NineGridLayout extends ViewGroup {
      * @param length
      */
     private void generateChildrenLayout(int length) {
+        Log.d("tag", "generateChildrenLayout: 执行");
         if (length <= 3) {
             mRows = 1;
             mColumns = length;
@@ -291,7 +296,7 @@ public abstract class NineGridLayout extends ViewGroup {
         if (list == null || list.length == 0) {
             return 0;
         }
-        return list.length;
+        return Utils.getArraySize(list);
     }
 
     private int getFontHeight(float fontSize) {

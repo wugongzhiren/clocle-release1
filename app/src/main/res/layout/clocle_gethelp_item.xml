@@ -7,11 +7,11 @@
     android:id="@+id/clocle_help_item_head"
     android:layout_width="match_parent"
     android:layout_height="70dp">
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/user_photo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            />
+        <ImageView
+    android:id="@+id/user_photo"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    />
         <RelativeLayout
             android:id="@+id/nickname_date"
             android:layout_toRightOf="@+id/user_photo"
@@ -56,12 +56,13 @@
             android:layout_below="@+id/clocle_help_item_head"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/imgs"
-            android:layout_marginTop="10dp"
+        <com.view.ninegrid.NineGridTestLayout
             android:layout_below="@+id/clocle_content"
+            android:id="@+id/imgs"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="wrap_content">
+
+        </com.view.ninegrid.NineGridTestLayout>
         <TextView
             android:id="@+id/school"
             android:layout_below="@+id/imgs"

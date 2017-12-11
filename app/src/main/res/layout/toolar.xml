@@ -5,8 +5,5 @@
     android:layout_width="match_parent"
     android:background="#27f9c8"
     android:layout_height="?attr/actionBarSize">
-<Button
-    android:id="@+id/dynamic_publish"
-    android:layout_width="60dp"
-    android:layout_height="match_parent" />
+
 </android.support.v7.widget.Toolbar>

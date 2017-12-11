@@ -1,47 +1,44 @@
 package com.bean;
 
+import java.util.Date;
+
 /**
  * 用户信息类，字段和数据库中对应
  * Created by Administrator on 2016/7/16.
  */
 public class User {
-    private long userID;
-    private String nickname;//昵称
-    private String password;
-    private String phonenumber;//用手机号码登录
-    private String school;//学校
-    private String birth;
-    private String sex;
-    private String signature;//个性签名
-    private String starsign;//星座
+    private Long id;//
+    private String username;//
+    private String password;//
+    private String email;//
+    private Boolean emailVerified;//
+    private String sessionToken;//
+    private String phone;//
+    private String photoUrl;//
+    private String sex;//
+    private String school;//
+    private Date birthdate;//
+    private String signature;//
+    private Integer score;//积分
+    private String albumUrl;//相册图片路径
 
-    public User(long userID, String nickname, String password, String phonenumber, String school,
-                String birth, String sex, String signature, String starsign) {
-        this.userID = userID;
-        this.nickname = nickname;
-        this.password = password;
-        this.phonenumber = phonenumber;
-        this.school = school;
-        this.birth = birth;
-        this.sex = sex;
-        this.signature = signature;
-        this.starsign = starsign;
+    public User() {
     }
 
-    public long getUserID() {
-        return userID;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserID(long userID) {
-        this.userID = userID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -52,28 +49,44 @@ public class User {
         this.password = password;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getSchool() {
-        return school;
+    public Boolean getEmailVerified() {
+        return emailVerified;
     }
 
-    public void setSchool(String school) {
-        this.school = school;
+    public void setEmailVerified(Boolean emailVerified) {
+        this.emailVerified = emailVerified;
     }
 
-    public String getBirth() {
-        return birth;
+    public String getSessionToken() {
+        return sessionToken;
     }
 
-    public void setBirth(String birth) {
-        this.birth = birth;
+    public void setSessionToken(String sessionToken) {
+        this.sessionToken = sessionToken;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
     public String getSex() {
@@ -84,6 +97,22 @@ public class User {
         this.sex = sex;
     }
 
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+
     public String getSignature() {
         return signature;
     }
@@ -92,11 +121,19 @@ public class User {
         this.signature = signature;
     }
 
-    public String getStarsign() {
-        return starsign;
+    public Integer getScore() {
+        return score;
     }
 
-    public void setStarsign(String starsign) {
-        this.starsign = starsign;
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public String getAlbumUrl() {
+        return albumUrl;
+    }
+
+    public void setAlbumUrl(String albumUrl) {
+        this.albumUrl = albumUrl;
     }
 }

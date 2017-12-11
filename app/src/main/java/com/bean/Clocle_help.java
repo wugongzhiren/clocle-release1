@@ -1,7 +1,5 @@
 package com.bean;
 
-import com.clocle.huxiang.clocle.Bmob_UserBean;
-
 import java.util.List;
 
 
@@ -9,12 +7,12 @@ import java.util.List;
  * Created by Administrator on 2016/9/19.
  */
 public class Clocle_help {
-    private String content;
-    private Integer peopleNum;
-    private Integer sum_clocle_money;
-    private Bmob_UserBean bmob_userBean;
-    private List<String > imgs;
-    private String tag;
+    private String content;//发布内容
+    private Integer peopleNum;//限制人数
+    private Integer sum_clocle_money;//悬赏总额
+    private User user;//发布用户
+    private List<String> imgs;//图片路径
+    private String tag;//标签
 
     public String getTag() {
         return tag;
@@ -48,12 +46,12 @@ public class Clocle_help {
         this.sum_clocle_money = sum_clocle_money;
     }
 
-    public Bmob_UserBean getBmob_userBean() {
-        return bmob_userBean;
+    public User getUser() {
+        return user;
     }
 
-    public void setBmob_userBean(Bmob_UserBean bmob_userBean) {
-        this.bmob_userBean = bmob_userBean;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<String> getImgs() {

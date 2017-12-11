@@ -3,6 +3,7 @@ package com.view.ninegrid;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ public class NineGridTestLayout extends NineGridLayout {
     protected boolean displayOneImage(final RatioImageView imageView, String url, final int parentWidth) {
         int w = 300;
         int h = 600;
-
+        Log.d("tag", "displayOneImage: 实现类");
         int newW;
         int newH;
         if (h > w * MAX_W_H_RATIO) {//h:w = 5:3

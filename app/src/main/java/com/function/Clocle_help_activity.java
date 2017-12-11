@@ -1,8 +1,10 @@
 package com.function;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -79,6 +81,8 @@ public class Clocle_help_activity extends AppCompatActivity {
     };
 
     private RecyclerView hotuserRv;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

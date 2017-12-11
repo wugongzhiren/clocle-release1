@@ -79,7 +79,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
 
-        final String pic=datas.get(position).getBmob_userBean().getphotoUrl();
+        final String pic=datas.get(position).getUser().getPhotoUrl();
         //holder.itemView.setTag(datas.get(position).getObjectId());
         if (holder instanceof MyViewHolder) {
             ((MyViewHolder) holder).photo.setImageURI(pic);

@@ -9,4 +9,5 @@
 
     <dimen name="margin_left">10dp</dimen>
     <dimen name="test">0dp</dimen>
+    <dimen name="toolbar">60dp</dimen>
 </resources>

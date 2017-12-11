@@ -46,11 +46,13 @@ public class Dynamic_Detail extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent=getIntent();
-        final Dynamic mdynamic=(Dynamic) intent.getSerializableExtra("dynamic");
+       /* Intent intent=getIntent();
+        final Dynamic mdynamic=(Dynamic) intent.getSerializableExtra("dynamic");*/
         setContentView(R.layout.dynamic_detail_layout);
+
+
         //用户评论
-        comment= (EditText) findViewById(R.id.dynamic_comment_edit);
+       /* comment= (EditText) findViewById(R.id.dynamic_comment_edit);
         //发表评论
         button= (Button) findViewById(R.id.dynamic_comment_publish_bt);
         button.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +64,7 @@ public class Dynamic_Detail extends AppCompatActivity{
                 }
                 else {
                     usercomment=comment.getHint().toString()+comment.getText().toString();
-                }
+                }*/
 
    /*             final Dynamic_Comment commentBean=new Dynamic_Comment();
                 commentBean.setComment(usercomment);
@@ -78,7 +80,7 @@ public class Dynamic_Detail extends AppCompatActivity{
                         }
                     }
                 });*/
-            }
+      /*      }
         });
         dynamic_commentList=new ArrayList<>();
         //头像
@@ -94,7 +96,7 @@ public class Dynamic_Detail extends AppCompatActivity{
         //评论RV
         commentRv= (RecyclerView) findViewById(R.id.dynamic_detail_comment_rv);
         commentRv.setLayoutManager(new LinearLayoutManager(this));
-
+*/
 
 
 
@@ -138,7 +140,7 @@ public class Dynamic_Detail extends AppCompatActivity{
         content.setText(mdynamic.getDynamicContent());
         nickname.setText(mdynamic.getUser().getUsername());
         single_imgs_adapter=new Rv_single_imgs_adapter(mdynamic.getImgs(),this);*/
-        single_imgs_adapter.setOnItemOnclickListener(new Rv_single_imgs_adapter.OnItemOnclickListener() {
+     /*   single_imgs_adapter.setOnItemOnclickListener(new Rv_single_imgs_adapter.OnItemOnclickListener() {
             @Override
             public void onItemClick(View view, int pos) {
                 Intent intent =new Intent(Dynamic_Detail.this, Preview_photo.class);
@@ -147,7 +149,7 @@ public class Dynamic_Detail extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-        detail_imgs_rv.setAdapter(single_imgs_adapter);
+        detail_imgs_rv.setAdapter(single_imgs_adapter);*/
 
     }
 }
