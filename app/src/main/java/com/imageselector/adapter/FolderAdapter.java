@@ -9,8 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.clocle.huxiang.clocle.R;
 import com.imageselector.bean.Folder;
 
@@ -91,12 +91,14 @@ public class FolderAdapter extends BaseAdapter {
                 if(mFolders.size()>0){
                     Folder f = mFolders.get(0);
                     if (f != null) {
+                        RequestOptions options = new RequestOptions();
+                        options.placeholder(R.drawable.mis_default_error);
+                        options.error(R.drawable.mis_default_error);
+                        options.centerCrop();
+                        options.override(R.dimen.mis_folder_cover_size, R.dimen.mis_folder_cover_size);
                         Glide.with(mContext)
                                 .load(new File(f.cover.path))
-                                .placeholder(R.drawable.mis_default_error)
-                                .error(R.drawable.mis_default_error)
-                                .centerCrop()
-                                .override(R.dimen.mis_folder_cover_size, R.dimen.mis_folder_cover_size)
+                                .apply(options)
                                 .into(holder.cover);
 
                     }else{
@@ -166,9 +168,6 @@ public class FolderAdapter extends BaseAdapter {
                 // 显示图片
                 Glide.with(mContext)
                         .load(new File(data.cover.path))
-                        .placeholder(R.drawable.mis_default_error)
-                        .centerCrop()
-                        .override(R.dimen.mis_folder_cover_size, R.dimen.mis_folder_cover_size)
                         .into(cover);
 
             }else{

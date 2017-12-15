@@ -242,9 +242,6 @@ public class ImageGridAdapter extends BaseAdapter {
                 // 显示图片
                 Glide.with(mContext)
                         .load(imageFile)
-                        .placeholder(R.drawable.mis_default_error)
-                        .centerCrop()
-                        .override(mGridWidth, mGridWidth)
                         .into(image);
 
             }

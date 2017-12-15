@@ -11,8 +11,8 @@ import android.view.View;
  */
 
 public class EmptyRecleView extends RecyclerView {
-    private View emptyView;
-    private static final String TAG = "hiwhitley";
+    private EmptyLayout emptyView;
+    private static final String TAG = "EmptyRecleView";
 
     final private AdapterDataObserver observer = new AdapterDataObserver() {
         @Override
@@ -45,13 +45,19 @@ public class EmptyRecleView extends RecyclerView {
         super(context, attrs, defStyle);
     }
 
+    /**
+     * 是否需要显示emptyView,在这里只会出现一种情况，就是加载到空数据，其他的情况在外面处理
+     */
     private void checkIfEmpty() {
         if (emptyView != null && getAdapter() != null) {
             final boolean emptyViewVisible =
                     getAdapter().getItemCount() == 0;
+            //设置为什么也没有视图
+            emptyView.setType(1);
             emptyView.setVisibility(emptyViewVisible ? VISIBLE : GONE);
             setVisibility(emptyViewVisible ? GONE : VISIBLE);
         }
+
     }
 
     @Override
@@ -64,12 +70,12 @@ public class EmptyRecleView extends RecyclerView {
         if (adapter != null) {
             adapter.registerAdapterDataObserver(observer);
         }
-
-        checkIfEmpty();
+        //checkIfEmpty();
     }
 
-    public void setEmptyView(View emptyView) {
+    public void setEmptyView(EmptyLayout emptyView) {
         this.emptyView = emptyView;
         checkIfEmpty();
     }
+
 }

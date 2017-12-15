@@ -15,14 +15,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bean.Flea_market;
 import com.bean.Index_list_bean;
-import com.clocle.huxiang.clocle.Bmob_UserBean;
 import com.clocle.huxiang.clocle.R;
 import com.clocle.huxiang.clocle.Reg;
 import com.clocle.huxiang.clocle.Self_manager;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.function.Clocle_help_activity;
+import com.clocle_help.Clocle_help_activity;
 import com.function.FleaMarket;
 import com.ui.Album;
 

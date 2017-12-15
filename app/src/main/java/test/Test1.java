@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.clocle.huxiang.clocle.R;
+import com.view.EmptyLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,8 @@ public class Test1 extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_layout);
+        setContentView(R.layout.empty_view);
+        View emptyView=LayoutInflater.from(this).inflate(R.layout.empty_view,null,false);
+        ((EmptyLayout)emptyView).setType(3);
 
 }}

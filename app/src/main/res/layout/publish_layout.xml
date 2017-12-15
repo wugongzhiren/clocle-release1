@@ -1,152 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="match_parent">
-
-        <ScrollView
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <FrameLayout
+            android:layout_height="150dp"
+            android:hint="有什么需要帮助的尽管说"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="添加标签"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <EditText
+                android:hint="有打赏才有动力帮助你哦"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="安徽大学"/>
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+        </GridView>
+    </LinearLayout>
 
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="我要" />
-
-                        <EditText
-                            android:id="@+id/publish_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="130dp"
-                            android:layout_marginLeft="30dp"
-                            android:gravity="clip_horizontal"
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="赏金" />
-
-                        <EditText
-                            android:id="@+id/publish_money"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="30dp"
-                            android:gravity="clip_horizontal"
-                            android:hint="我愿意打赏多少么么哒"
-
-                            android:inputType="number" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                             />
-
-                        <EditText
-                            android:id="@+id/publish_people"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="30dp"
-                            android:gravity="clip_horizontal"
-                            android:hint="希望多少人参与" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            />
-
-                        <EditText
-                            android:id="@+id/publish_tag"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="30dp"
-                            android:gravity="clip_horizontal"
-                            android:hint="如：聊天，辅导，陪玩游戏" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="我在" />
-
-                        <TextView
-                            android:id="@+id/publish_school"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="30dp"
-                            android:gravity="clip_horizontal"
-                             />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="right"
-                            android:src="@mipmap/right" />
-                    </LinearLayout>
-
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/picked_photo"
-                        android:layout_width="match_parent"
-                        android:layout_height="300dp">
-
-                    </android.support.v7.widget.RecyclerView>
-
-
-                </LinearLayout>
-
-                <Button
-
-                    android:id="@+id/publish_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_gravity="bottom"
-                    android:layout_margin="10dp"
-                    android:text="发布" />
-            </FrameLayout>
-        </ScrollView>
+    <LinearLayout
+        android:layout_gravity="bottom"
+        android:background="#489ad6"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+        <Button
+            android:id="@+id/addImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="添加图片"/>
+    </LinearLayout>
     </LinearLayout>

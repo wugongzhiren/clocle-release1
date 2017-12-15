@@ -8,14 +8,11 @@ import android.view.ViewGroup;
 
 import com.ViewHolder.Clocle_help_Holder;
 import com.bean.Clocle_help;
-import com.bean.Dynamic;
 import com.bumptech.glide.Glide;
 import com.clocle.huxiang.clocle.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import image.GlideCircleTransform;
 
 /**
  * 请求帮助的适配器
@@ -74,8 +71,8 @@ public class Clocle_help_adapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
         if (holder instanceof Clocle_help_Holder) {
             //加载头像
+            //.transform(new GlideCircleTransform(mcontext))
             Glide.with(mcontext).load(list.get(position).getUser().getPhotoUrl())
-                    .transform(new GlideCircleTransform(mcontext))
                     .into(((Clocle_help_Holder) holder).avartarImage);
             //加载内容
             ((Clocle_help_Holder) holder).contentText.setText(list.get(position).getContent());

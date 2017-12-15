@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -15,6 +18,10 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Looper;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.Window;
+import android.view.WindowManager;
 
 public class Utils {
 
@@ -162,5 +169,19 @@ public class Utils {
 			}
 		}
 		return count;
+	}
+
+	/**
+	 * 获取屏幕宽高（像素）
+	 */
+	public void getDeviceWH(Activity context) {
+		Display display = context.getWindow().getWindowManager().getDefaultDisplay();
+		DisplayMetrics dm = new DisplayMetrics();
+		display.getMetrics(dm);
+		HashMap map=new HashMap();
+		int deviceWidth = dm.widthPixels;
+		int deviceHeight = dm.heightPixels;
+		map.put("width",deviceWidth);
+		map.put("height",deviceHeight);
 	}
 }

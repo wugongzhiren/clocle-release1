@@ -8,15 +8,22 @@
     <!--标题栏-->
     <include layout="@layout/toolar"/>
 
+
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <com.view.EmptyRecleView
             android:id="@+id/clocle_help_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
+        </FrameLayout>
+
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
 
 </LinearLayout>

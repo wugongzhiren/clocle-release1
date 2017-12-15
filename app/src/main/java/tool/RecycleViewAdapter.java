@@ -3,7 +3,6 @@ package tool;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,16 +18,13 @@ import com.adapter.Rv_single_imgs_adapter;
 import com.application.App;
 import com.bean.Clocle_help;
 
-import com.clocle.huxiang.clocle.Bmob_UserBean;
 import com.clocle.huxiang.clocle.Other_Self_infos;
 import com.clocle.huxiang.clocle.R;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.function.Clocle_help_details;
+import com.clocle_help.Clocle_help_details;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.view.Preview_photo;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

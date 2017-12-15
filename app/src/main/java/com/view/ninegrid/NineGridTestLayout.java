@@ -51,8 +51,6 @@ public class NineGridTestLayout extends NineGridLayout {
         setOneImageLayoutParams(imageView, newW, newH);
         Glide.with(mContext)
                 .load(url)
-                .placeholder(R.drawable.mis_default_error)
-                .centerCrop()
                 .into(imageView);
 
 /*        ImageLoaderUtil.displayImage(mContext, imageView, url, ImageLoaderUtil.getPhotoImageOption(), new ImageLoadingListener() {
@@ -98,8 +96,6 @@ public class NineGridTestLayout extends NineGridLayout {
     protected void displayImage(RatioImageView imageView, String url) {
         Glide.with(mContext)
                 .load(url)
-                .placeholder(R.drawable.mis_default_error)
-                .centerCrop()
                 .into(imageView);
     }
 

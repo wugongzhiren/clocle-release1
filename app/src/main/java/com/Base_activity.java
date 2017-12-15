@@ -71,6 +71,17 @@ public class Base_activity extends AppCompatActivity implements View.OnClickList
     }
 
     /**
+     * 设置沉浸式状态栏,安卓4.4以上
+     * http://blog.csdn.net/jdsjlzx/article/details/46778631
+     */
+    protected void setStatusBar(){
+        //透明状态栏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        //透明导航栏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+    }
+
+    /**
      * 统一结束activity
      */
     public void finishAllActivity(){

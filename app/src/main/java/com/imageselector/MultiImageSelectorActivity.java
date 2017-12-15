@@ -20,7 +20,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * Multi image selector
+ * Multi image selector(已弃用)
  * Created by Nereo on 2015/4/7.
  * Updated by nereo on 2016/1/19.
  * Updated by nereo on 2016/5/18.
