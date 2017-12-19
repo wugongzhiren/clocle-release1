@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide;
 import com.clocle.huxiang.clocle.R;
 import com.common_tool.ImageFactory;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.luck.picture.lib.entity.LocalMedia;
 import com.view.DynamicHWimageview;
 
 import java.util.ArrayList;
@@ -34,23 +35,22 @@ import java.util.List;
  */
 
 public class Picked_photo_adapter extends BaseAdapter {
-    private List<ImageInfo> photoInfoList;
+    private List<LocalMedia> selectList=new ArrayList<>();
     private LayoutInflater inflater;
 private Context context;
-    public Picked_photo_adapter(Context mcontext, List<ImageInfo> infoList) {
+    public Picked_photo_adapter(Context mcontext) {
         this.inflater = LayoutInflater.from(mcontext);
-        this.photoInfoList = infoList;
         this.context=mcontext;
     }
 
     @Override
     public int getCount() {
-        return photoInfoList.size();
+        return selectList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return photoInfoList.get(position);
+        return selectList.get(position);
     }
 
     @Override
@@ -69,7 +69,7 @@ private Context context;
             holder.imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    photoInfoList.remove(position);
+                    selectList.remove(position);
                     notifyDataSetChanged();
                 }
             });
@@ -79,7 +79,7 @@ private Context context;
         }
 
         Glide.with(context)
-                .load(photoInfoList.get(position).url)
+                .load(selectList.get(position).getPath())
                 .into(holder.imgview);
         holder.imageButton.setVisibility(View.VISIBLE);
         //RxJava异步压缩图片
@@ -126,9 +126,16 @@ private Context context;
         return convertView;
     }
 
+    public void setSelectList(List<LocalMedia> lists){
+        this.selectList.clear();
+        this.selectList.addAll(lists);
+        notifyDataSetChanged();
+    }
+
     class SinglePhotoVH {
         private DynamicHWimageview imgview;
         private ImageButton imageButton;
     }
+
 }
 

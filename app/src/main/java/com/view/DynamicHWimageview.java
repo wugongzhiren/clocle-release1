@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ public class DynamicHWimageview extends AppCompatImageView {
         DisplayMetrics outMetrics = new DisplayMetrics();
         windowManager.getDefaultDisplay().getMetrics(outMetrics);
         screenwidth = outMetrics.widthPixels;//获取屏幕宽度的像素值
+        Log.i("DynamicHWimageview", "屏幕宽度的像素: "+screenwidth);
         screenwidthDP = DensityUtil.px2dip(context,screenwidth);
 
     }
@@ -37,10 +39,12 @@ public class DynamicHWimageview extends AppCompatImageView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
-    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int width = getMySize(screenwidthDP/3-6, widthMeasureSpec);
-        int height = getMySize(screenwidthDP/3-6, heightMeasureSpec);
-        setMeasuredDimension(DensityUtil.dip2px(mcontext,width), DensityUtil.dip2px(mcontext,height));
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        //26=padding+gridView间隔
+        int width = (screenwidthDP-26)/3;
+        Log.i(getClass().getName(), "设置宽度: "+width);
+        setMeasuredDimension(DensityUtil.dip2px(mcontext,width),DensityUtil.dip2px(mcontext,width));
 }
 
     private int getMySize(int defaultSize, int measureSpec) {

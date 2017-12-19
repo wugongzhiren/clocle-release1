@@ -5,8 +5,8 @@
 <com.view.DynamicHWimageview
 android:scaleType="centerCrop"
     android:id="@+id/picked_photo_item"
-    android:layout_width="150dp"
-    android:layout_height="150dp" />
+    android:layout_width="0dp"
+    android:layout_height="0dp" />
 <ImageButton
 android:visibility="gone"
     android:layout_gravity="right"

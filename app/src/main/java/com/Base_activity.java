@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.application.App;
+import com.clocle.huxiang.clocle.R;
 
 import java.util.ArrayList;
 import java.util.List;

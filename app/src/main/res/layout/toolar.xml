@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/common_toolbar"
     android:layout_width="match_parent"
-    android:background="#27f9c8"
-    android:layout_height="?attr/actionBarSize">
-
+    android:layout_height="?attr/actionBarSize"
+    android:background="#3ba0ff">
+   <RelativeLayout
+        android:id="@+id/toolbar_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+       <Button
+           android:id="@+id/back"
+           android:background="@mipmap/back"
+           android:layout_width="50dp"
+           android:layout_height="match_parent" />
+       <TextView
+           android:id="@+id/title"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent" />
+<Button
+    android:layout_alignParentRight="true"
+    android:layout_marginRight="10dp"
+    android:id="@+id/toolbar_bt"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="发布"
+    />
+    </RelativeLayout>
 </android.support.v7.widget.Toolbar>

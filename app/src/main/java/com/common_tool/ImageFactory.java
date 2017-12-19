@@ -303,4 +303,20 @@ public class ImageFactory {
         imageView.setImageURI(Uri.parse(url));
         return imageView;
     }
+    /**
+     * 单图片工厂，返回已经加载了图片的ImageView
+     * @param context
+     * @param drawable
+     * @return
+     */
+    public static ImageView getImageViewWithImage(Context context, int drawable) {
+        //SimpleDraweeView imageView = (SimpleDraweeView) LayoutInflater.from(context).inflate(
+        //      R.layout.single_img, null);
+        ImageView imageView=new SimpleDraweeView(context);
+        imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        //imageView.setScaleType();
+        imageView.setImageDrawable(context.getResources().getDrawable(drawable));
+        return imageView;
+    }
 }

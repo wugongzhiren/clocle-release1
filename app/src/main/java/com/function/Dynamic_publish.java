@@ -246,7 +246,7 @@ public class Dynamic_publish extends Base_activity {
 
                     @Override
                     public void onComplete() {
-                        picked_photo_adapter = new Picked_photo_adapter(mcontext, radioPhoto);
+                       // picked_photo_adapter = new Picked_photo_adapter(mcontext, radioPhoto);
                         //picked_photo_adapter.notifyDataSetChanged();
                         gridView.setAdapter(picked_photo_adapter);
                     }

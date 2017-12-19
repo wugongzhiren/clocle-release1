@@ -59,21 +59,21 @@
                 -->
             </intent-filter>
         </activity>
-        <activity android:name=".Login"></activity>
-        <activity android:name=".WelcomeActivity1"></activity>
-        <activity android:name=".Reg"></activity>
+        <activity android:name=".Login" />
+        <activity android:name=".WelcomeActivity1" />
+        <activity android:name=".Reg" />
         <activity
             android:name="com.toolview.Edit_Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             >
         </activity>
-        <activity android:name=".Self_Info"></activity>
+        <activity android:name=".Self_Info" />
         <!-- 个人中心 -->
         <activity
             android:name=".Self_manager"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <!--
             <activity
             android:name="com.mob.tools.MobUIShell"
@@ -81,13 +81,13 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         -->
-        <activity android:name=".Reg_login"></activity>
+        <activity android:name=".Reg_login" />
         <activity
             android:name="tool.Progress_Activity"
-            android:theme="@style/MyDialogStyle"></activity>
+            android:theme="@style/MyDialogStyle" />
         <activity
             android:name="tool.Pop_activity"
-            android:theme="@style/MyDialogStyle"></activity>
+            android:theme="@style/MyDialogStyle" />
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -119,10 +119,7 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name="test.Test1">
-
-
-        </activity>
+        <activity android:name="test.Test1" />
         <!--
         <activity android:name=".Index_fg">
 
@@ -136,19 +133,19 @@
             </intent-filter>
         </activity>
         -->
-        <activity android:name="test.Test3"></activity>
-        <activity android:name="com.clocle_help.Clocle_help_activity"></activity>
-        <activity android:name="com.clocle_help.Clocle_help_details"></activity>
-        <activity android:name=".Other_Self_infos"></activity>
-        <activity android:name="com.webapp.Present_center"></activity>
-        <activity android:name="test.Test_Fresco"></activity>
-        <activity android:name="test.Test_PhotoView"></activity>
-        <activity android:name="com.function.FleaMarket"></activity>
-        <activity android:name="com.function.FleaMarket_details"></activity>
+        <activity android:name="test.Test3" />
+        <activity android:name="com.clocle_help.Clocle_help_activity" />
+        <activity android:name="com.clocle_help.Clocle_help_details" />
+        <activity android:name=".Other_Self_infos" />
+        <activity android:name="com.webapp.Present_center" />
+        <activity android:name="test.Test_Fresco" />
+        <activity android:name="test.Test_PhotoView" />
+        <activity android:name="com.function.FleaMarket" />
+        <activity android:name="com.function.FleaMarket_details" />
         <activity
             android:name="com.function.Flea_publish"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"></activity>
-        <activity android:name="com.function.WelComeActivity"></activity>
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity android:name="com.function.WelComeActivity" />
         <activity
             android:name="com.im.CoversationActivity"
             android:screenOrientation="portrait"
@@ -164,20 +161,23 @@
                     android:scheme="rong" />
             </intent-filter>
         </activity>
-        <activity android:name="com.function.Dynamic_publish"></activity>
-        <activity android:name="com.function.Dynamic_Detail"></activity>
-        <activity android:name="com.ui.Album"></activity>
+        <activity android:name="com.function.Dynamic_publish" />
+        <activity android:name="com.function.Dynamic_Detail" />
+        <activity android:name="com.ui.Album" />
         <activity android:name="com.ui.UpdateSelfInfo"></activity>
-        <activity android:name="com.ui.AddPhoto"></activity>
-        <activity android:name="com.imageselector.view.StartImage"></activity>
-        <activity android:name="com.imageselector.MultiImageSelectorActivity"></activity>
+        <activity android:name="com.ui.AddPhoto" />
+        <activity android:name="com.imageselector.view.StartImage" />
+        <activity android:name="com.imageselector.MultiImageSelectorActivity" />
         <activity android:name="com.clocle_help.ClocleHelpMainActivity">
+        </activity>
+        <activity android:name="com.clocle_help.Publish" />
+        <activity android:name="com.activity.GuideActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.clocle_help.Publish"/>
     </application>
 
 </manifest>

@@ -174,7 +174,7 @@ public class Utils {
 	/**
 	 * 获取屏幕宽高（像素）
 	 */
-	public void getDeviceWH(Activity context) {
+	public static HashMap getDeviceWH(Activity context) {
 		Display display = context.getWindow().getWindowManager().getDefaultDisplay();
 		DisplayMetrics dm = new DisplayMetrics();
 		display.getMetrics(dm);
@@ -183,5 +183,21 @@ public class Utils {
 		int deviceHeight = dm.heightPixels;
 		map.put("width",deviceWidth);
 		map.put("height",deviceHeight);
+		return map;
+	}
+
+	//内容区域哦变亮
+	public static void lightOn(Activity context) {
+		WindowManager.LayoutParams lp = context.getWindow().getAttributes();
+		lp.alpha = 1.0f;
+		context.getWindow().setAttributes(lp);
+
+	}
+	//内容区域哦变暗
+	public static void lightOff(Activity context) {
+		WindowManager.LayoutParams lp = context.getWindow().getAttributes();
+		lp.alpha = .2f;
+		context.getWindow().setAttributes(lp);
+
 	}
 }
