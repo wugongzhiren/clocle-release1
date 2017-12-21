@@ -88,7 +88,7 @@ public class Clocle_help_activity extends AppCompatActivity {
         //getDeviceWH();
         setContentView(R.layout.clocle_help_layout);
         //加载轮播图控件
-        initialize();
+        //initialize();
         //加载热门服务用户
         inithotuser();
         //加载提供帮助用户信息
@@ -133,10 +133,11 @@ public class Clocle_help_activity extends AppCompatActivity {
     /**
      * 加载轮播图控件
      */
+/*
     private void initialize() {
 
-       /* cycleViewPager = (CycleViewPager) getFragmentManager()
-                .findFragmentById(R.id.fragment_cycle_viewpager_content);*/
+        cycleViewPager = (CycleViewPager) getFragmentManager()
+                .findFragmentById(R.id.fragment_cycle_viewpager_content);
 
         for (int i = 0; i < imageUrls.length; i++) {
             ADInfo info = new ADInfo();
@@ -166,6 +167,7 @@ public class Clocle_help_activity extends AppCompatActivity {
         //设置圆点指示图标组居中显示，默认靠右
         cycleViewPager.setIndicatorCenter();
     }
+*/
 
     /**
      * 加载viewpager

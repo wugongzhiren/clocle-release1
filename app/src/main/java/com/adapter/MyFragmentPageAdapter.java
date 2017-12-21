@@ -2,6 +2,7 @@ package com.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * Created by Hodo on 2017/12/7.
  */
 
-public class MyFragmentPageAdapter extends FragmentStatePagerAdapter {
+public class MyFragmentPageAdapter extends FragmentPagerAdapter {
     private List<String> title;
     private List<Fragment> views;
 

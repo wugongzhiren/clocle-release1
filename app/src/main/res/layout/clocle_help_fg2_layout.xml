@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--活动轮播图-->
+            <fragment
+                android:id="@+id/cycle_viewpager"
+                android:name="com.view.CycleViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"/>
+            <LinearLayout
+                android:padding="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+                <!---->
+                <TextView
+                    android:text="热门服务者"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!--热门-->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/hotuser_rv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+            <TextView
+                android:text="最新"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <!--最新-->
+        <com.view.EmptyRecleView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.view.EmptyRecleView>
+            </LinearLayout>
+        </LinearLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bean.ImageInfo;
+import com.bumptech.glide.Glide;
 import com.clocle.huxiang.clocle.R;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -288,19 +289,17 @@ public class ImageFactory {
     }
 
     /**
-     * 单图片工厂，返回已经加载了图片的simpledraweview
+     * 单图片工厂，返回已经加载了图片的Imageview
      * @param context
      * @param url
      * @return
      */
-    public static SimpleDraweeView getSimpleDraweeView(Context context, String url) {
+    public static ImageView getImageWithGlide(Context context, String url) {
        //SimpleDraweeView imageView = (SimpleDraweeView) LayoutInflater.from(context).inflate(
          //      R.layout.single_img, null);
-        SimpleDraweeView imageView=new SimpleDraweeView(context);
+        ImageView imageView=new ImageView(context);
         imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        //imageView.setScaleType();
-        imageView.setImageURI(Uri.parse(url));
+        Glide.with(context).load(url).into(imageView);
         return imageView;
     }
     /**

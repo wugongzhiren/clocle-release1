@@ -1,8 +1,8 @@
 package com.view;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeListener {
 
-    private List<SimpleDraweeView> imageViews = new ArrayList<SimpleDraweeView>();
+    private List<ImageView> imageViews = new ArrayList<ImageView>();
     private ImageView[] indicators;
     private FrameLayout viewPagerFragmentLayout;
     private LinearLayout indicatorLayout; // 指示器
@@ -91,7 +91,7 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
         return view;
     }
 
-    public void setData(List<SimpleDraweeView> views, List<ADInfo> list, ImageCycleViewListener listener) {
+    public void setData(List<ImageView> views, List<ADInfo> list, ImageCycleViewListener listener) {
         setData(views, list, listener, 0);
     }
 
@@ -103,7 +103,7 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
      * @param showPosition
      *            默认显示位置
      */
-    public void setData(List<SimpleDraweeView> views, List<ADInfo> list, ImageCycleViewListener listener, int showPosition) {
+    public void setData(List<ImageView> views, List<ADInfo> list, ImageCycleViewListener listener, int showPosition) {
         mImageCycleViewListener = listener;
         infos = list;
         this.imageViews.clear();
@@ -113,7 +113,7 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
             return;
         }
 
-        for (SimpleDraweeView item : views) {
+        for (ImageView item : views) {
             this.imageViews.add(item);
         }
 
@@ -285,7 +285,7 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 
         @Override
         public View instantiateItem(ViewGroup container, final int position) {
-            SimpleDraweeView v = imageViews.get(position);
+            ImageView v = imageViews.get(position);
             if (mImageCycleViewListener != null) {
                 v.setOnClickListener(new View.OnClickListener() {
 

@@ -1,13 +1,10 @@
 package com.clocle_help;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,8 +22,9 @@ import com.view.NoSlideViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
-import tool.AnimationsHelper;
-
+/**
+ * 圈圈帮主页
+ */
 public class ClocleHelpMainActivity extends Base_activity implements RadioGroup.OnCheckedChangeListener,View.OnClickListener,ViewPager.OnPageChangeListener{
     private List<Fragment> fragments=new ArrayList<>();
     private RadioGroup radioGroup;
@@ -78,11 +76,13 @@ public class ClocleHelpMainActivity extends Base_activity implements RadioGroup.
      * 实例化fragment
      */
     public void initFragments(){
-        Fragment fragment1=new Clocle_help_fg();
+        Fragment fragment1=new Clocle_help_fg1();
+        Fragment fragment2=new Clocle_help_fg2();
         /*Fragment fragment2=new Fragment2();
         Fragment fragment3=new Fragment3();
         Fragment fragment4=new Fragment4();*/
         fragments.add(fragment1);
+        fragments.add(fragment2);
         /*fragments.add(fragment2);
         fragments.add(fragment3);
         fragments.add(fragment4);*/
