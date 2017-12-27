@@ -6,23 +6,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Objects;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Environment;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bean.ImageInfo;
 import com.bumptech.glide.Glide;
-import com.clocle.huxiang.clocle.R;
-import com.facebook.drawee.drawable.ScalingUtils;
+import com.bumptech.glide.request.RequestOptions;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 /**
@@ -317,5 +312,25 @@ public class ImageFactory {
         //imageView.setScaleType();
         imageView.setImageDrawable(context.getResources().getDrawable(drawable));
         return imageView;
+    }
+
+    /**
+     * 设置图片新的宽高返回
+     * @param imageView
+     * OH 原始高 OW原始宽,单位都是px单位
+     * @return
+     */
+    public static void setNewHWImage(ImageView imageView, int OW, int OH,int screenW){
+        ViewGroup.LayoutParams lp=imageView.getLayoutParams();
+        //imageView
+        float ratio=OH/OW;//长宽的比率
+        int width=lp.width=screenW/2;
+        lp.height= (int) (width*ratio);
+        imageView.setLayoutParams(lp);
+    }
+    public static RequestOptions getGlideOpitions(){
+        RequestOptions options=new RequestOptions();
+        options.centerCrop();
+        return options;
     }
 }

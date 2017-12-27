@@ -6,11 +6,17 @@
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lastestUserRv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+        <!--<LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <!--活动轮播图-->
+            &lt;!&ndash;活动轮播图&ndash;&gt;
             <fragment
                 android:id="@+id/cycle_viewpager"
                 android:name="com.view.CycleViewPager"
@@ -21,12 +27,12 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="120dp">
-                <!---->
+                &lt;!&ndash;&ndash;&gt;
                 <TextView
                     android:text="热门服务者"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <!--热门-->
+                &lt;!&ndash;热门&ndash;&gt;
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/hotuser_rv"
                     android:layout_width="wrap_content"
@@ -42,13 +48,14 @@
                 android:text="最新"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <!--最新-->
+            &lt;!&ndash;最新&ndash;&gt;
         <com.view.EmptyRecleView
+            android:id="@+id/lastestUserRv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         </com.view.EmptyRecleView>
             </LinearLayout>
-        </LinearLayout>
+        </LinearLayout>-->
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

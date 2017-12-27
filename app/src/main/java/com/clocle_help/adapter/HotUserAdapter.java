@@ -17,7 +17,6 @@ import com.clocle.huxiang.clocle.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * 热门服务用户的adapter

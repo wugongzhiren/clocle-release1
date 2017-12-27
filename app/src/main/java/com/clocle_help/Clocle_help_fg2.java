@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +13,15 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bean.ADInfo;
+import com.bean.ServiceUser;
 import com.bean.User;
 import com.clocle.huxiang.clocle.R;
 import com.clocle_help.adapter.HotUserAdapter;
+import com.clocle_help.adapter.LatestDatasAdapter;
+import com.clocle_help.adapter.LatestUserAdapter;
 import com.common_tool.ImageFactory;
 import com.view.CycleViewPager;
+import com.view.EmptyRecleView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +37,8 @@ public class Clocle_help_fg2 extends android.support.v4.app.Fragment {
     private List<ADInfo> infos = new ArrayList<ADInfo>();
     private List<ImageView> views = new ArrayList<ImageView>();
     private List<User> hotUserList =new ArrayList<>();
+    private RecyclerView lastestUser;//最新用户列表
+    private List<ServiceUser> serviceUsers=new ArrayList<>();//最新用户列表数据
     private String[] imageUrls = {"http://img.taodiantong.cn/v55183/infoimg/2013-07/130720115322ky.jpg",
             "http://pic30.nipic.com/20130626/8174275_085522448172_2.jpg",
             "http://pic18.nipic.com/20111215/577405_080531548148_2.jpg",
@@ -56,11 +64,11 @@ public class Clocle_help_fg2 extends android.support.v4.app.Fragment {
 
         View view=inflater.inflate(R.layout.clocle_help_fg2_layout,container,false);
         //加载轮播图控件
-        initialize();
+        //initialize();
         //加载热门服务用户
-        inithotuser(view);
+        //inithotuser(view);
         //加载提供帮助用户信息
-        initProvider();
+        initProvider(view);
         //加载数据
         initData();
         return view;
@@ -71,8 +79,8 @@ public class Clocle_help_fg2 extends android.support.v4.app.Fragment {
      */
     private void initialize() {
 
-        cycleViewPager = (CycleViewPager) getChildFragmentManager()
-                .findFragmentById(R.id.cycle_viewpager);
+        //cycleViewPager = (CycleViewPager) getChildFragmentManager()
+              //  .findFragmentById(R.id.cycle_viewpager);
 
         for (int i = 0; i < imageUrls.length; i++) {
             ADInfo info = new ADInfo();
@@ -123,7 +131,19 @@ public class Clocle_help_fg2 extends android.support.v4.app.Fragment {
     /**
      * 加载提供帮助者
      */
-    private void initProvider() {
+    private void initProvider(View view) {
+        lastestUser=view.findViewById(R.id.lastestUserRv);
+
+        lastestUser.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+
+       /* LatestUserAdapter adapter=new LatestUserAdapter(getActivity());
+        lastestUser.setAdapter(adapter);
+*/
+        getLatestUserDatas();
+        LatestDatasAdapter adapter=new LatestDatasAdapter(R.layout.cloclehelp_latestuseritem,serviceUsers,getActivity());
+        lastestUser.setAdapter(adapter);
+       /* Log.i("clocle_help2", "serviceUsers: "+serviceUsers.size());
+        adapter.setDatas(serviceUsers);*/
     }
 
     /**
@@ -175,6 +195,53 @@ public class Clocle_help_fg2 extends android.support.v4.app.Fragment {
         hotUserList.add(user6);
         hotUserList.add(user7);
         hotUserList.add(user8);
+    }
 
+    /**
+     * 获取最新服务者数据
+     */
+    public void getLatestUserDatas(){
+        //造假数据
+        List<String> imgs=new ArrayList<>();
+        imgs.add("http://ww4.sinaimg.cn/bmiddle/4a4673aagy1fhahigitiaj20ic0qik2l.jpg");
+        List<String> imgs1=new ArrayList<>();
+        imgs1.add("https://wx4.sinaimg.cn/mw690/005XrVZply1fmm9sroyvxj30qo0qo427.jpg");
+        List<String> imgs2=new ArrayList<>();
+        imgs2.add("https://wx2.sinaimg.cn/mw690/005XrVZply1fgqcz90nz4j30e70e8adg.jpg");
+        List<String> imgs3=new ArrayList<>();
+        imgs3.add("https://wx2.sinaimg.cn/mw690/005XrVZply1fmiklbu07tj30k00zkq5x.jpg");
+        User user=new User();
+        user.setUsername("我是豆豆a");
+        user.setPhotoUrl("https://wx1.sinaimg.cn/mw690/69c1dcbbgy1fllg3gowdoj20hs0hsmzo.jpg");
+        User user1=new User();
+        user1.setUsername("爱笑的兔纸");
+        user1.setPhotoUrl("https://wx3.sinaimg.cn/mw690/69c1dcbbgy1fllg3j1c7ij20xc0xc0wl.jpg");
+        User user2=new User();
+        user2.setUsername("小果子");
+        user2.setPhotoUrl("https://wx2.sinaimg.cn/mw690/69c1dcbbgy1fllg3sihqmj20m80m8ae3.jpg");
+        User user3=new User();
+        user3.setUsername("喜欢微笑zzzz");
+        user3.setPhotoUrl("https://wx3.sinaimg.cn/mw690/69c1dcbbgy1fllg3fhhq4j20xc0xdgq4.jpg");
+        //TODO
+        ServiceUser data=new ServiceUser();
+        data.setServiceContent("拿快递，代课，带早点，快来找我哟");
+        data.setImgs(imgs);
+        data.setUser(user);
+        ServiceUser data1=new ServiceUser();
+        data1.setServiceContent("跑腿装系统，我最擅长");
+        data1.setImgs(imgs1);
+        data1.setUser(user1);
+        ServiceUser data2=new ServiceUser();
+        data2.setServiceContent("陪跑步，陪健身，陪打球，天天运动身体棒棒哒");
+        data2.setImgs(imgs2);
+        data2.setUser(user2);
+        ServiceUser data3=new ServiceUser();
+        data3.setServiceContent("考研的妹子陪你上自习，一起学习共同进步吧");
+        data3.setImgs(imgs3);
+        data3.setUser(user3);
+        serviceUsers.add(data);
+        serviceUsers.add(data1);
+        serviceUsers.add(data2);
+        serviceUsers.add(data3);
     }
 }

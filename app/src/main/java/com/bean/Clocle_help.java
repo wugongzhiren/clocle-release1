@@ -4,6 +4,7 @@ import java.util.List;
 
 
 /**
+ * 圈圈求助内容bean
  * Created by Administrator on 2016/9/19.
  */
 public class Clocle_help {
